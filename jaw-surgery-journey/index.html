@@ -10,6 +10,30 @@
 <title>Your Jaw Surgery Journey | Langley Oral &amp; Maxillofacial Surgery</title>
 <link rel="preload" href="fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function () {
+  "use strict";
+  var map = {
+    "after-consult": "consult", consult: "consult",
+    "pre-op": "consent", preop: "consent", consent: "consent",
+    surgery: "date", date: "date", "surgery-date": "date",
+    recovery: "recovery"
+  };
+  var stage = "";
+  try {
+    (location.search || "").replace(/^\?/, "").split("&").forEach(function (p) {
+      var kv = p.split("=");
+      if (decodeURIComponent(kv[0] || "") === "stage") {
+        stage = decodeURIComponent((kv[1] || "").replace(/\+/g, " ")).toLowerCase();
+      }
+    });
+  } catch (e) {}
+  if (map[stage]) {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "stage-lock";
+    document.documentElement.setAttribute("data-open-stage", map[stage]);
+  }
+})();
+</script>
 <style>
 /* ==========================================================================
    THEME — sunset infographic. Swap these to restyle the page.
@@ -188,8 +212,59 @@ h1 span{display:block}
   background:rgba(20,28,38,.28);
 }
 .spoke:hover,.spoke:focus-visible{background:rgba(20,28,38,.5);border-color:#fff}
-.spoke svg{width:16px;height:16px}
+.spoke svg{width:16px;height:16px;flex:none}
+.spoke .lock{display:none;width:13px;height:13px;opacity:.9}
 .hint{text-align:center;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;color:var(--ink-dim);margin:10px 0 0}
+.hint-lock{display:none;margin-top:8px}
+
+html.stage-lock .spoke[data-stage="consult"],
+html.stage-lock .spoke[data-stage="consent"],
+html.stage-lock .spoke[data-stage="date"],
+html.stage-lock .spoke[data-stage="recovery"]{
+  opacity:.38;
+  pointer-events:none;
+  cursor:default;
+  background:rgba(20,28,38,.18);
+}
+html.stage-lock .spoke[data-stage="consult"] .lock,
+html.stage-lock .spoke[data-stage="consent"] .lock,
+html.stage-lock .spoke[data-stage="date"] .lock,
+html.stage-lock .spoke[data-stage="recovery"] .lock{display:block}
+html.stage-lock[data-open-stage="consult"] .spoke[data-stage="consult"],
+html.stage-lock[data-open-stage="consent"] .spoke[data-stage="consent"],
+html.stage-lock[data-open-stage="date"] .spoke[data-stage="date"],
+html.stage-lock[data-open-stage="recovery"] .spoke[data-stage="recovery"]{
+  opacity:1;
+  pointer-events:auto;
+  cursor:pointer;
+  border-color:#fff;
+  background:rgba(255,255,255,.14);
+  box-shadow:0 0 0 1px rgba(255,255,255,.5), 0 10px 28px rgba(16,20,28,.22);
+}
+html.stage-lock[data-open-stage="consult"] .spoke[data-stage="consult"] .lock,
+html.stage-lock[data-open-stage="consent"] .spoke[data-stage="consent"] .lock,
+html.stage-lock[data-open-stage="date"] .spoke[data-stage="date"] .lock,
+html.stage-lock[data-open-stage="recovery"] .spoke[data-stage="recovery"] .lock{display:none}
+html.stage-lock .hint-open{display:none}
+html.stage-lock .hint-lock{display:block}
+html.stage-lock .panel[data-lock="stage"]{display:none}
+html.stage-lock[data-open-stage="consult"] #consult,
+html.stage-lock[data-open-stage="consent"] #consent,
+html.stage-lock[data-open-stage="date"] #date,
+html.stage-lock[data-open-stage="recovery"] #recovery{display:block}
+html.stage-lock .jump a[data-lock="stage"]{
+  opacity:.35;
+  pointer-events:none;
+}
+html.stage-lock[data-open-stage="consult"] .jump a[data-stage="consult"],
+html.stage-lock[data-open-stage="consent"] .jump a[data-stage="consent"],
+html.stage-lock[data-open-stage="date"] .jump a[data-stage="date"],
+html.stage-lock[data-open-stage="recovery"] .jump a[data-stage="recovery"]{
+  opacity:1;
+  pointer-events:auto;
+  color:#fff;
+  box-shadow:inset 0 -2px 0 #fff;
+}
 
 @media (min-width:780px){
   .mindmap{max-width:560px;height:560px;margin:8px auto 12px}
@@ -419,6 +494,7 @@ footer.legal{
   <symbol id="phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M8 4h3l1 4-2 1a10 10 0 0 0 5.5 5.5l1-2 4 1v3A16 16 0 0 1 7 6.2 2 2 0 0 1 8 4z"/></symbol>
   <symbol id="rx" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="6" y="3.5" width="12" height="17" rx="1"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
   <symbol id="faq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="7.5"/><path d="M9.6 10a2.4 2.4 0 1 1 4 1.6c-.7.7-1.6 1.1-1.6 2.2"/><path d="M12 16.6h.01"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="6" y="11" width="12" height="9" rx="1"/><path d="M8.5 11V8.2a3.5 3.5 0 0 1 7 0V11"/></symbol>
 </svg>
 
 <header class="hero wrap">
@@ -494,16 +570,17 @@ footer.legal{
     <svg class="flourish" aria-hidden="true"><use href="#leaves"/></svg>
   </div>
   <ol class="spokes">
-    <li class="s1"><a class="spoke" href="#consult"><svg aria-hidden="true"><use href="#chat"/></svg> After Consult</a></li>
-    <li class="s2"><a class="spoke" href="#consent"><svg aria-hidden="true"><use href="#clock"/></svg> Consent &amp; Pre-op</a></li>
-    <li class="s3"><a class="spoke" href="#date"><svg aria-hidden="true"><use href="#cal"/></svg> Surgery Date</a></li>
-    <li class="s4"><a class="spoke" href="#recovery"><svg aria-hidden="true"><use href="#leaf"/></svg> Recovery</a></li>
-    <li class="s5"><a class="spoke" href="#faq"><svg aria-hidden="true"><use href="#faq"/></svg> FAQ</a></li>
-    <li class="s6"><a class="spoke" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg> Contacts</a></li>
-    <li class="s7"><a class="spoke" href="#pharmacies"><svg aria-hidden="true"><use href="#rx"/></svg> Pharmacies</a></li>
+    <li class="s1"><a class="spoke" data-stage="consult" data-lock="stage" href="#consult"><svg aria-hidden="true"><use href="#chat"/></svg> After Consult <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s2"><a class="spoke" data-stage="consent" data-lock="stage" href="#consent"><svg aria-hidden="true"><use href="#clock"/></svg> Consent &amp; Pre-op <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s3"><a class="spoke" data-stage="date" data-lock="stage" href="#date"><svg aria-hidden="true"><use href="#cal"/></svg> Surgery Date <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s4"><a class="spoke" data-stage="recovery" data-lock="stage" href="#recovery"><svg aria-hidden="true"><use href="#leaf"/></svg> Recovery <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s5"><a class="spoke" data-stage="faq" href="#faq"><svg aria-hidden="true"><use href="#faq"/></svg> FAQ</a></li>
+    <li class="s6"><a class="spoke" data-stage="contact" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg> Contacts</a></li>
+    <li class="s7"><a class="spoke" data-stage="pharmacies" href="#pharmacies"><svg aria-hidden="true"><use href="#rx"/></svg> Pharmacies</a></li>
   </ol>
 </nav>
-<p class="hint">Tap a segment to jump</p>
+<p class="hint hint-open">Tap a segment to jump</p>
+<p class="hint hint-lock">Your care team will unlock the next step.</p>
 
 <section class="path wrap" aria-labelledby="path-title">
   <h2 id="path-title">The path · consult to recovery</h2>
@@ -532,18 +609,18 @@ footer.legal{
 </section>
 
 <nav class="jump no-print" aria-label="Jump to a stage">
-  <a href="#consult">Consult</a>
-  <a href="#consent">Consent</a>
-  <a href="#date">Date</a>
-  <a href="#recovery">Recovery</a>
-  <a href="#faq">FAQ</a>
-  <a href="#contact">Clinic</a>
-  <a href="#pharmacies">Rx</a>
+  <a href="#consult" data-stage="consult" data-lock="stage">Consult</a>
+  <a href="#consent" data-stage="consent" data-lock="stage">Consent</a>
+  <a href="#date" data-stage="date" data-lock="stage">Date</a>
+  <a href="#recovery" data-stage="recovery" data-lock="stage">Recovery</a>
+  <a href="#faq" data-stage="faq">FAQ</a>
+  <a href="#contact" data-stage="contact">Clinic</a>
+  <a href="#pharmacies" data-stage="pharmacies">Rx</a>
 </nav>
 
 <main>
 <div class="wrap">
-  <article class="panel" id="consult">
+  <article class="panel" id="consult" data-lock="stage">
     <p class="lbl">Stage 01</p>
     <h2>After Your Consult</h2>
     <p class="intro">You have met Dr. Kang and talked about jaw surgery. Next comes braces, paperwork, and a hospital waitlist. This is the full overview of the path ahead.</p>
@@ -600,7 +677,7 @@ footer.legal{
     </ul>
   </article>
 
-  <article class="panel" id="consent">
+  <article class="panel" id="consent" data-lock="stage">
     <p class="lbl">Stage 02</p>
     <h2>Consent &amp; Pre-op</h2>
     <p class="intro">You have signed consent and shared your preferred months. This stretch is mostly waiting. That is normal.</p>
@@ -626,7 +703,7 @@ footer.legal{
     <p>If you have not heard from us for a while, that usually means a date has not been released yet. Questions are still welcome — text or call during clinic hours.</p>
   </article>
 
-  <article class="panel" id="date">
+  <article class="panel" id="date" data-lock="stage">
     <p class="lbl">Stage 03</p>
     <h2>Your Surgery Date</h2>
     <p class="intro">Dates come out about 3–4 weeks before surgery. When we offer you a date, reply as soon as you can: <strong>YES – [DATE]</strong> or <strong>NO</strong>.</p>
@@ -669,7 +746,7 @@ footer.legal{
     <p>Want tick-boxes and dates on your phone? Use <a href="../">Your Jaw Surgery Checklist</a>. It stays on this device only — nothing is sent to the clinic.</p>
   </article>
 
-  <article class="panel" id="recovery">
+  <article class="panel" id="recovery" data-lock="stage">
     <p class="lbl">Stage 04</p>
     <h2>Recovery</h2>
     <p class="intro">Healing takes patience. Follow Dr. Kang’s instructions for you. The notes below are a general guide, not a replacement for your own plan.</p>
@@ -811,17 +888,57 @@ footer.legal{
 (function () {
   "use strict";
   document.documentElement.classList.add("js");
+  var open = document.documentElement.getAttribute("data-open-stage");
+  var lockable = { consult: 1, consent: 1, date: 1, recovery: 1 };
   var ids = ["consult","consent","date","recovery","faq","contact","pharmacies"];
   var jump = document.querySelectorAll(".jump a");
+  var spokes = document.querySelectorAll(".spoke");
+
+  function lockLink(el) {
+    el.removeAttribute("href");
+    el.setAttribute("tabindex", "-1");
+    el.setAttribute("aria-disabled", "true");
+    el.setAttribute("aria-label", (el.textContent || "").replace(/\s+/g, " ").trim() + " (locked)");
+    el.addEventListener("click", function (e) { e.preventDefault(); });
+  }
+
+  var skip = document.querySelector(".skip");
+  if (skip && open) skip.setAttribute("href", "#" + open);
+
+  if (open) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-lock='stage']"), function (el) {
+      var stage = el.getAttribute("data-stage") || el.id;
+      if (stage && stage !== open) {
+        if (el.tagName === "A") lockLink(el);
+      } else if (el.tagName === "A") {
+        el.setAttribute("aria-current", "true");
+      }
+    });
+    window.addEventListener("hashchange", function () {
+      var h = (location.hash || "").replace(/^#/, "");
+      if (lockable[h] && h !== open) {
+        if (history.replaceState) history.replaceState(null, "", location.pathname + location.search + "#" + open);
+        var panel = document.getElementById(open);
+        if (panel && panel.scrollIntoView) panel.scrollIntoView({ block: "start" });
+      }
+    });
+  }
+
   function current() {
     var y = window.scrollY + 72;
-    var active = ids[0];
+    var active = open || ids[0];
     ids.forEach(function (id) {
+      if (open && lockable[id] && id !== open) return;
       var el = document.getElementById(id);
       if (el && el.offsetTop <= y) active = id;
     });
     jump.forEach(function (a) {
-      a.setAttribute("aria-current", a.getAttribute("href") === "#" + active ? "true" : "false");
+      var href = a.getAttribute("href") || "";
+      a.setAttribute("aria-current", href === "#" + active ? "true" : "false");
+    });
+    spokes.forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      if (href) a.setAttribute("aria-current", href === "#" + active ? "true" : "false");
     });
   }
   window.addEventListener("scroll", current, { passive: true });
