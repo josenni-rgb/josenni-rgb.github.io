@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#5E6E7C">
+<meta name="description" content="Your jaw surgery journey with Dr. Ben Kang at Langley Oral &amp; Maxillofacial Surgery — from consult to UBC Hospital and recovery.">
+<title>Your Jaw Surgery Journey | Langley Oral &amp; Maxillofacial Surgery</title>
+<link rel="preload" href="fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+(function () {
+  "use strict";
+  var map = {
+    "after-consult": "consult", consult: "consult",
+    "pre-op": "consent", preop: "consent", consent: "consent",
+    surgery: "date", date: "date", "surgery-date": "date",
+    recovery: "recovery"
+  };
+  var stage = "";
+  try {
+    (location.search || "").replace(/^\?/, "").split("&").forEach(function (p) {
+      var kv = p.split("=");
+      if (decodeURIComponent(kv[0] || "") === "stage") {
+        stage = decodeURIComponent((kv[1] || "").replace(/\+/g, " ")).toLowerCase();
+      }
+    });
+  } catch (e) {}
+  if (map[stage]) {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "stage-lock";
+    document.documentElement.setAttribute("data-open-stage", map[stage]);
+  }
+})();
+</script>
+<style>
+/* ==========================================================================
+   THEME — sunset infographic. Swap these to restyle the page.
+   ========================================================================== */
+:root{
+  --sky-top: #5E6E7C;
+  --sky-mid: #8A868C;
+  --peach: #D9A078;
+  --gold: #F0A24C;
+  --sun: #FFE08A;
+  --sun-core: #FFF6C8;
+  --ink: #F4F1EA;
+  --ink-dim: rgba(244,241,234,.78);
+  --line: rgba(255,255,255,.55);
+  --line-strong: rgba(255,255,255,.82);
+  --panel: rgba(22, 28, 38, .46);
+  --panel-deep: rgba(16, 20, 28, .62);
+  --warn: #FFE0A3;
+  --danger: #FFC9BC;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-poiret: "Poiret One", "Big Shoulders Display", sans-serif;
+  --font-sans: "Josefin Sans", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+@font-face{font-family:"Big Shoulders Display";src:url("fonts/big-shoulders-100.woff2") format("woff2");font-weight:100;font-style:normal;font-display:swap}
+@font-face{font-family:"Big Shoulders Display";src:url("fonts/big-shoulders-300.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Josefin Sans";src:url("fonts/josefin-300.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Josefin Sans";src:url("fonts/josefin-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Josefin Sans";src:url("fonts/josefin-600.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Poiret One";src:url("fonts/poiret-one.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font:17px/1.6 var(--font-sans);
+  font-weight:400;
+  background-color:var(--sky-top);
+  background-image:
+    radial-gradient(ellipse 90% 36% at 50% 100%, var(--sun) 0%, rgba(240,162,76,.55) 22%, transparent 58%),
+    linear-gradient(180deg,
+      var(--sky-top) 0%,
+      #6E7C88 10%,
+      var(--sky-mid) 22%,
+      #B39486 48%,
+      var(--peach) 68%,
+      var(--gold) 88%,
+      #F4B45A 100%);
+  background-attachment:scroll;
+  min-height:100vh;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+a{color:var(--ink);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.skip{
+  position:absolute;left:-999px;top:0;background:#111;color:#fff;
+  padding:10px 14px;z-index:50;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;font-size:.75rem;
+}
+.skip:focus{left:0}
+.wrap{width:min(920px, calc(100% - 28px));margin-inline:auto}
+.print-url{display:none}
+.hair{height:1px;background:var(--line);border:0;margin:0}
+
+/* ----- Hero ----- */
+.hero{padding:36px 0 10px;text-align:center;position:relative}
+.kicker{
+  margin:0 0 18px;
+  font-weight:300;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-dim);
+}
+h1{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(3.4rem, 16vw, 8.2rem);
+  line-height:.82;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  margin:0 0 8px;
+  color:#fff;
+  text-shadow:0 2px 28px rgba(16,20,28,.35);
+}
+h1 span{display:block}
+.yearish{
+  font-family:var(--font-poiret);
+  font-size:clamp(1.4rem, 4vw, 2.2rem);
+  letter-spacing:.42em;
+  text-transform:uppercase;
+  color:#fff;
+  margin:6px 0 18px;
+}
+.lede{
+  margin:0 auto;max-width:34rem;color:var(--ink-dim);
+  font-weight:300;font-size:1.02rem;
+}
+
+/* ----- Photos ----- */
+.shot{margin:16px 0 0;border:1px solid var(--line);background:rgba(16,20,28,.25)}
+.shot img{display:block;width:100%;height:auto;max-height:260px;object-fit:cover;object-position:center}
+.shot figcaption{
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;
+  padding:8px 12px;border-top:1px solid var(--line);color:var(--ink-dim);text-align:left;
+}
+.hero-shot{margin:22px auto 0;max-width:920px}
+.hero-shot img{max-height:240px}
+.shots{display:grid;grid-template-columns:1fr;margin:16px 0 0;border:1px solid var(--line)}
+.shots .shot{margin:0;border:0}
+.shots .shot + .shot{border-top:1px solid var(--line)}
+@media (min-width:640px){
+  .shots{grid-template-columns:1fr 1fr}
+  .shots .shot + .shot{border-top:0;border-left:1px solid var(--line)}
+  .hero-shot img{max-height:320px}
+  .shot img{max-height:280px}
+}
+@media print{
+  .shot img{max-height:180px}
+}
+
+/* ----- Fact grid ----- */
+.facts{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  margin:28px 0 8px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+@media (min-width:720px){.facts{grid-template-columns:repeat(4,1fr)}}
+.fact{
+  padding:18px 12px;text-align:center;
+  border-right:1px solid var(--line);
+}
+.facts .fact:nth-child(2n){border-right:0}
+@media (min-width:720px){
+  .facts .fact:nth-child(2n){border-right:1px solid var(--line)}
+  .facts .fact:last-child{border-right:0}
+}
+.donut{
+  width:84px;height:84px;margin:0 auto 8px;position:relative;
+}
+.donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.donut .n{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:100;font-size:1.85rem;letter-spacing:.02em;
+}
+.fact .lbl{
+  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;color:var(--ink-dim);
+}
+
+/* ----- Mind map ----- */
+.mindmap{position:relative;margin:28px auto 6px;max-width:420px}
+.mindmap-svg{display:none}
+.hub{
+  width:min(210px, 68%);
+  aspect-ratio:1;
+  margin:0 auto 8px;
+  border-radius:50%;
+  border:1px dashed var(--line-strong);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:16px;position:relative;z-index:2;
+  background:rgba(20,28,38,.22);
+}
+.hub .heart{width:18px;height:16px;margin-bottom:6px}
+.hub strong{
+  font-family:var(--font-display);font-weight:100;font-size:1.35rem;
+  line-height:.9;letter-spacing:.06em;text-transform:uppercase;color:#fff;
+}
+.hub .flourish{width:70px;height:14px;margin-top:8px;opacity:.85}
+.spokes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;position:relative}
+.spokes::before{
+  content:"";position:absolute;top:0;bottom:8px;left:50%;width:1px;background:var(--line);transform:translateX(-50%);
+}
+.spokes li{position:relative;z-index:1;margin:8px 0;width:min(280px, 94%)}
+.spoke{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  min-height:46px;padding:8px 14px;
+  color:#fff;text-decoration:none;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:300;
+  border:1px solid var(--line);
+  background:rgba(20,28,38,.28);
+}
+.spoke:hover,.spoke:focus-visible{background:rgba(20,28,38,.5);border-color:#fff}
+.spoke svg{width:16px;height:16px;flex:none}
+.spoke .lock{display:none;width:13px;height:13px;opacity:.9}
+.hint{text-align:center;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;color:var(--ink-dim);margin:10px 0 0}
+.hint-lock{display:none;margin-top:8px}
+
+html.stage-lock .spoke[data-stage="consult"],
+html.stage-lock .spoke[data-stage="consent"],
+html.stage-lock .spoke[data-stage="date"],
+html.stage-lock .spoke[data-stage="recovery"]{
+  opacity:.38;
+  pointer-events:none;
+  cursor:default;
+  background:rgba(20,28,38,.18);
+}
+html.stage-lock .spoke[data-stage="consult"] .lock,
+html.stage-lock .spoke[data-stage="consent"] .lock,
+html.stage-lock .spoke[data-stage="date"] .lock,
+html.stage-lock .spoke[data-stage="recovery"] .lock{display:block}
+html.stage-lock[data-open-stage="consult"] .spoke[data-stage="consult"],
+html.stage-lock[data-open-stage="consent"] .spoke[data-stage="consent"],
+html.stage-lock[data-open-stage="date"] .spoke[data-stage="date"],
+html.stage-lock[data-open-stage="recovery"] .spoke[data-stage="recovery"]{
+  opacity:1;
+  pointer-events:auto;
+  cursor:pointer;
+  border-color:#fff;
+  background:rgba(255,255,255,.14);
+  box-shadow:0 0 0 1px rgba(255,255,255,.5), 0 10px 28px rgba(16,20,28,.22);
+}
+html.stage-lock[data-open-stage="consult"] .spoke[data-stage="consult"] .lock,
+html.stage-lock[data-open-stage="consent"] .spoke[data-stage="consent"] .lock,
+html.stage-lock[data-open-stage="date"] .spoke[data-stage="date"] .lock,
+html.stage-lock[data-open-stage="recovery"] .spoke[data-stage="recovery"] .lock{display:none}
+html.stage-lock .hint-open{display:none}
+html.stage-lock .hint-lock{display:block}
+html.stage-lock .panel[data-lock="stage"]{display:none}
+html.stage-lock[data-open-stage="consult"] #consult,
+html.stage-lock[data-open-stage="consent"] #consent,
+html.stage-lock[data-open-stage="date"] #date,
+html.stage-lock[data-open-stage="recovery"] #recovery{display:block}
+html.stage-lock .jump a[data-lock="stage"]{
+  opacity:.35;
+  pointer-events:none;
+}
+html.stage-lock[data-open-stage="consult"] .jump a[data-stage="consult"],
+html.stage-lock[data-open-stage="consent"] .jump a[data-stage="consent"],
+html.stage-lock[data-open-stage="date"] .jump a[data-stage="date"],
+html.stage-lock[data-open-stage="recovery"] .jump a[data-stage="recovery"]{
+  opacity:1;
+  pointer-events:auto;
+  color:#fff;
+  box-shadow:inset 0 -2px 0 #fff;
+}
+
+@media (min-width:780px){
+  .mindmap{max-width:560px;height:560px;margin:8px auto 12px}
+  .mindmap-svg{display:block;width:100%;height:100%}
+  .hub{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:172px;margin:0;z-index:3;
+  }
+  .spokes{position:absolute;inset:0}
+  .spokes::before{display:none}
+  .spokes li{
+    position:absolute;left:50%;top:50%;width:auto;margin:0;
+    transform:translate(-50%,-50%) rotate(var(--a)) translate(var(--r, 200px)) rotate(calc(-1 * var(--a)));
+  }
+  .spoke{min-width:128px;background:rgba(20,28,38,.32);backdrop-filter:blur(6px)}
+  .s1{--a:-90deg}.s2{--a:-38.57deg}.s3{--a:12.86deg}.s4{--a:64.29deg}
+  .s5{--a:115.71deg}.s6{--a:167.14deg}.s7{--a:218.57deg}
+}
+
+/* ----- Path timeline ----- */
+.path{
+  margin:32px auto;padding:18px 8px 8px;
+  border-top:1px solid var(--line);
+}
+.path h2{
+  font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:300;
+  text-align:center;margin:0 0 16px;color:var(--ink-dim);
+}
+.path-svg{width:100%;height:auto;display:block}
+.path-vert{display:block;margin:0 auto}
+.path-horiz{display:none}
+@media (min-width:720px){
+  .path-vert{display:none}
+  .path-horiz{display:block}
+}
+
+/* ----- Jump ----- */
+.jump{display:none}
+html.js .jump{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:0;
+  position:sticky;top:0;z-index:30;
+  background:rgba(40,50,62,.55);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.jump a{
+  color:var(--ink);text-decoration:none;
+  font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:300;
+  padding:12px 10px;min-height:44px;display:inline-flex;align-items:center;
+  border-right:1px solid var(--line);
+}
+.jump a:last-child{border-right:0}
+.jump a[aria-current="true"]{color:#fff;box-shadow:inset 0 -2px 0 #fff}
+
+/* ----- Panels ----- */
+main{padding:8px 0 72px;position:relative}
+.panel{
+  background:var(--panel);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  margin:22px 0;
+  padding:22px 18px 20px;
+  scroll-margin-top:56px;
+}
+.lower .panel{background:var(--panel-deep)}
+.panel h2{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1.8rem, 6vw, 2.8rem);
+  letter-spacing:.08em;text-transform:uppercase;line-height:.95;
+  margin:0 0 8px;color:#fff;
+}
+.lbl{
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:300;color:var(--ink-dim);
+  margin:0 0 10px;
+}
+.panel h3{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;
+  margin:22px 0 8px;color:#fff;border-top:1px solid var(--line);padding-top:14px;
+}
+.intro{color:var(--ink-dim);margin:0 0 14px}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:1.1em}
+li{margin:6px 0}
+.grid{
+  display:grid;gap:0;border-top:1px solid var(--line);
+}
+@media (min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.cell{padding:14px 12px 12px;border-bottom:1px solid var(--line)}
+@media (min-width:640px){
+  .grid.two .cell:nth-child(odd){border-right:1px solid var(--line)}
+}
+.num{
+  font-family:var(--font-display);font-weight:100;font-size:2.6rem;line-height:.9;color:#fff;margin:0 0 4px;
+}
+.rows{list-style:none;padding:0;margin:0}
+.rows li{
+  display:grid;grid-template-columns:18px 1fr;gap:10px;
+  margin:0;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.18);
+}
+.rows li:last-child{border-bottom:0}
+.dot{width:9px;height:9px;margin-top:8px;border-radius:50%;border:1px solid #fff;background:transparent}
+.rows strong{display:block;font-weight:600}
+.rows span{display:block;color:var(--ink-dim);font-size:.97rem}
+
+.callout,.alert{
+  border:1px solid var(--line);padding:12px 14px;margin:12px 0;
+}
+.callout{color:var(--warn)}
+.alert{color:var(--danger)}
+.note{
+  font-family:var(--font-poiret);font-size:1.35rem;letter-spacing:.06em;
+  text-align:center;margin:8px 0 12px;
+}
+
+.jobs{list-style:none;padding:0;margin:0}
+.jobs li{
+  display:grid;grid-template-columns:auto 1fr;gap:12px;
+  margin:0;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.18);
+}
+.when{
+  font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;font-weight:300;
+  border:1px solid var(--line);padding:6px 8px;white-space:nowrap;align-self:start;
+}
+.jobs h3{margin:0 0 4px;border:0;padding:0;font-size:.78rem}
+.jobs p{margin:0;color:var(--ink-dim)}
+
+.tl{list-style:none;padding:6px 0 0;margin:0}
+.tl li{
+  position:relative;padding:0 0 18px 22px;margin:0;
+  border-left:1px solid var(--line);
+}
+.tl li:last-child{border-left-color:transparent;padding-bottom:0}
+.tl li::before{
+  content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;
+  border-radius:50%;background:transparent;border:1px solid #fff;
+}
+.tl strong{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:300}
+
+.ready{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:0}
+@media (min-width:560px){.ready{grid-template-columns:1fr 1fr}}
+.ready li{margin:0;padding:10px 12px;border:1px solid rgba(255,255,255,.2)}
+
+.pharmacies{display:grid;gap:0}
+@media (min-width:560px){.pharmacies{grid-template-columns:1fr 1fr}}
+.pharm{padding:10px 12px;border:1px solid rgba(255,255,255,.22)}
+.pharm .city{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:300;color:var(--ink-dim);margin:0 0 2px}
+.pharm .name{margin:0;font-weight:600}
+.pharm a{font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:46px;padding:10px 16px;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:300;
+  text-decoration:none;color:#fff;border:1px solid var(--line-strong);background:transparent;
+}
+.btn:hover{background:rgba(255,255,255,.1)}
+
+details.faq{border-bottom:1px solid rgba(255,255,255,.2)}
+details.faq summary{
+  cursor:pointer;padding:12px 0;min-height:48px;list-style:none;
+  display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:400;
+}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary::after{content:"+";color:#fff}
+details.faq[open] summary::after{content:"–"}
+details.faq .ans{padding:0 0 12px;color:var(--ink-dim)}
+
+.old-num{margin-top:12px;padding:10px 12px;border:1px solid var(--danger);color:var(--danger)}
+
+.horizon{
+  position:relative;margin-top:36px;padding:48px 0 28px;text-align:center;overflow:hidden;
+}
+.sun{
+  width:120px;height:120px;margin:0 auto 18px;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%, var(--sun-core) 0%, var(--sun) 38%, rgba(255,176,70,0) 70%);
+  box-shadow:0 0 60px 20px rgba(255,200,110,.35);
+}
+.quote{
+  font-family:var(--font-poiret);font-size:clamp(1.25rem, 3.4vw, 1.7rem);
+  letter-spacing:.08em;margin:0 auto;max-width:28rem;color:#fff;
+}
+.related{text-align:center;margin-top:18px;font-size:.9rem;color:var(--ink-dim)}
+.related a{font-weight:600}
+footer.legal{
+  margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+  text-align:center;font-size:.85rem;color:var(--ink-dim);
+}
+
+@media (prefers-reduced-motion:no-preference){
+  .sun{animation:glow 5s ease-in-out infinite alternate}
+}
+@keyframes rise{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+@keyframes glow{
+  from{filter:brightness(.95);transform:scale(.98)}
+  to{filter:brightness(1.08);transform:scale(1)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+@media print{
+  body{background:#fff;color:#111}
+  h1,.yearish,.panel h2,.spoke,.btn,.quote{color:#111}
+  .skip,.jump,.btns,.related,.sun,.no-print{display:none!important}
+  .panel{background:#fff;border:1px solid #333;backdrop-filter:none;break-inside:avoid}
+  a{color:#111}
+  .print-url{display:block;margin-top:8px;color:#333}
+  details.faq .ans, details.faq > *:not(summary){display:block!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#consult">Skip to journey stages</a>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <symbol id="heart" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 17.6C6.8 13.8 3.5 10.7 3.5 7.4 3.5 5.2 5.1 3.6 7.3 3.6c1.3 0 2.5.6 3.2 1.6.7-1 1.9-1.6 3.2-1.6 2.2 0 3.8 1.6 3.8 3.8 0 3.3-3.3 6.4-8 10.2z"/></symbol>
+  <symbol id="leaves" viewBox="0 0 80 16" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 8h64"/><path d="M24 8c-2-4-8-6-14-6 2 4 8 6 14 6z"/><path d="M56 8c2-4 8-6 14-6-2 4-8 6-14 6z"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M5 7h14v8H9l-4 3V7z"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="12" r="7.5"/><path d="M12 8v4l3 2"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="4.5" y="5.5" width="15" height="14" rx="1"/><path d="M8 3.5v4M16 3.5v4M4.5 10h15"/></symbol>
+  <symbol id="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M6 18c7-1 12-8 13-14-6 1-13 6-13 14z"/><path d="M8 14c2-1 5-4 7-8"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M8 4h3l1 4-2 1a10 10 0 0 0 5.5 5.5l1-2 4 1v3A16 16 0 0 1 7 6.2 2 2 0 0 1 8 4z"/></symbol>
+  <symbol id="rx" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="6" y="3.5" width="12" height="17" rx="1"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+  <symbol id="faq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="7.5"/><path d="M9.6 10a2.4 2.4 0 1 1 4 1.6c-.7.7-1.6 1.1-1.6 2.2"/><path d="M12 16.6h.01"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="6" y="11" width="12" height="9" rx="1"/><path d="M8.5 11V8.2a3.5 3.5 0 0 1 7 0V11"/></symbol>
+</svg>
+
+<header class="hero wrap">
+  <p class="kicker">Langley Oral &amp; Maxillofacial Surgery · Dr. Ben Kang</p>
+  <h1><span>Your Jaw</span><span>Surgery</span></h1>
+  <p class="yearish">Journey</p>
+  <p class="lede">From consult, to UBC Hospital, to recovery at home. Tap a stage on the wheel that matches where you are today.</p>
+  <p class="print-url">https://josenni-rgb.github.io/jaw-surgery-journey/</p>
+  <figure class="shot hero-shot">
+    <img src="photos/photo-consult.jpg" width="1280" height="720" alt="A surgeon reviews a jaw model and a 3D scan on a clinic desk at sunset. The person’s face is not shown.">
+    <figcaption>Consult · mapping the jaws</figcaption>
+  </figure>
+</header>
+
+<section class="facts wrap" aria-label="Key facts from this clinic’s path">
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="0"/>
+      </svg>
+      <span class="n">4</span>
+    </div>
+    <div class="lbl">Stages on this path</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="70"/>
+      </svg>
+      <span class="n" style="font-size:1.25rem">6–18</span>
+    </div>
+    <div class="lbl">Months of braces before surgery</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="90"/>
+      </svg>
+      <span class="n">~6</span>
+    </div>
+    <div class="lbl">Months waitlist to surgery</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="50"/>
+      </svg>
+      <span class="n">8</span>
+    </div>
+    <div class="lbl">Weeks of activity limits</div>
+  </div>
+</section>
+
+<nav class="mindmap" id="map" aria-label="Journey map">
+  <svg class="mindmap-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <circle cx="200" cy="200" r="186" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>
+    <path d="M200 200 L119.3 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L280.7 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L381.3 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L345.4 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L200 386" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L54.6 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L18.7 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <circle cx="200" cy="200" r="86" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1" stroke-dasharray="4 4"/>
+  </svg>
+  <div class="hub">
+    <svg class="heart" aria-hidden="true"><use href="#heart"/></svg>
+    <strong>Your Jaw<br>Surgery<br>Journey</strong>
+    <svg class="flourish" aria-hidden="true"><use href="#leaves"/></svg>
+  </div>
+  <ol class="spokes">
+    <li class="s1"><a class="spoke" data-stage="consult" data-lock="stage" href="#consult"><svg aria-hidden="true"><use href="#chat"/></svg> After Consult <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s2"><a class="spoke" data-stage="consent" data-lock="stage" href="#consent"><svg aria-hidden="true"><use href="#clock"/></svg> Consent &amp; Pre-op <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s3"><a class="spoke" data-stage="date" data-lock="stage" href="#date"><svg aria-hidden="true"><use href="#cal"/></svg> Surgery Date <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s4"><a class="spoke" data-stage="recovery" data-lock="stage" href="#recovery"><svg aria-hidden="true"><use href="#leaf"/></svg> Recovery <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s5"><a class="spoke" data-stage="faq" href="#faq"><svg aria-hidden="true"><use href="#faq"/></svg> FAQ</a></li>
+    <li class="s6"><a class="spoke" data-stage="contact" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg> Contacts</a></li>
+    <li class="s7"><a class="spoke" data-stage="pharmacies" href="#pharmacies"><svg aria-hidden="true"><use href="#rx"/></svg> Pharmacies</a></li>
+  </ol>
+</nav>
+<p class="hint hint-open">Tap a segment to jump</p>
+<p class="hint hint-lock">Your care team will unlock the next step.</p>
+
+<section class="path wrap" aria-labelledby="path-title">
+  <h2 id="path-title">The path · consult to recovery</h2>
+  <svg class="path-svg path-vert" viewBox="0 0 320 420" role="img" aria-label="Timeline from consult to recovery">
+    <path d="M40 20 C80 70, 40 110, 90 150 S200 210, 140 260 S60 330, 160 400" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="1.6">
+      <circle cx="40" cy="20" r="3.2" fill="none" stroke="#fff"/><text x="56" y="24">CONSULT</text>
+      <circle cx="62" cy="88" r="3.2" fill="none" stroke="#fff"/><text x="78" y="92">WAITLIST</text>
+      <circle cx="90" cy="150" r="3.2" fill="none" stroke="#fff"/><text x="106" y="154">CONSENT</text>
+      <circle cx="168" cy="210" r="3.2" fill="none" stroke="#fff"/><text x="184" y="214">SURGERY DATE</text>
+      <circle cx="140" cy="260" r="3.2" fill="none" stroke="#fff"/><text x="156" y="264">UBC HOSPITAL</text>
+      <circle cx="160" cy="400" r="3.2" fill="none" stroke="#fff"/><text x="176" y="404">RECOVERY</text>
+    </g>
+  </svg>
+  <svg class="path-svg path-horiz" viewBox="0 0 860 160" role="img" aria-label="Timeline from consult to recovery">
+    <path d="M30 110 C120 110, 150 40, 250 48 S380 150, 500 70 S680 20, 830 90" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.3"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="2">
+      <circle cx="40" cy="108" r="3.4" fill="none" stroke="#fff"/><text x="28" y="132">CONSULT</text>
+      <circle cx="190" cy="52" r="3.4" fill="none" stroke="#fff"/><text x="162" y="38">WAITLIST</text>
+      <circle cx="340" cy="108" r="3.4" fill="none" stroke="#fff"/><text x="312" y="132">CONSENT</text>
+      <circle cx="500" cy="70" r="3.4" fill="none" stroke="#fff"/><text x="448" y="56">SURGERY DATE</text>
+      <circle cx="660" cy="40" r="3.4" fill="none" stroke="#fff"/><text x="616" y="26">UBC HOSPITAL</text>
+      <circle cx="820" cy="88" r="3.4" fill="none" stroke="#fff"/><text x="786" y="112">RECOVERY</text>
+    </g>
+  </svg>
+</section>
+
+<nav class="jump no-print" aria-label="Jump to a stage">
+  <a href="#consult" data-stage="consult" data-lock="stage">Consult</a>
+  <a href="#consent" data-stage="consent" data-lock="stage">Consent</a>
+  <a href="#date" data-stage="date" data-lock="stage">Date</a>
+  <a href="#recovery" data-stage="recovery" data-lock="stage">Recovery</a>
+  <a href="#faq" data-stage="faq">FAQ</a>
+  <a href="#contact" data-stage="contact">Clinic</a>
+  <a href="#pharmacies" data-stage="pharmacies">Rx</a>
+</nav>
+
+<main>
+<div class="wrap">
+  <article class="panel" id="consult" data-lock="stage">
+    <p class="lbl">Stage 01</p>
+    <h2>After Your Consult</h2>
+    <p class="intro">You have met Dr. Kang and talked about jaw surgery. Next comes braces, paperwork, and a hospital waitlist. This is the full overview of the path ahead.</p>
+
+    <h3>The path at a glance</h3>
+    <ol class="rows">
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Keep going with orthodontics</strong><span>Pre-surgical braces or aligners are usually 6–18 months.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Readiness letter from your orthodontist</strong><span>Sent about 6–7 months before braces are expected to come off. No letter means no next step.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>OR Package → UBC Hospital waitlist</strong><span>You fill it in; the clinic faxes it to the hospital. This is how you get on the waitlist.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Consent / surgery-planning appointment</strong><span>Booked only after your orthodontist confirms you are ready. You sign final consent and share preferred months.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Wait for a surgery date</strong><span>Plan for at least about 6 months from waitlist to surgery. Dates come out 3–4 weeks before.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Surgery at UBC Hospital</strong><span>About 1.5–2 hours under general anaesthetic, usually one night in hospital.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Recovery and follow-ups in Langley</strong><span>Weekly visits at first. Post-surgical orthodontics is usually another 3–6 months.</span></div></li>
+    </ol>
+
+    <h3>Orthodontics keeps going</h3>
+    <figure class="shot">
+      <img src="photos/photo-braces.jpg" width="1024" height="1024" alt="Close-up of a dental teaching model with metal braces, used to show how teeth are lined up before jaw surgery.">
+      <figcaption>Braces stay on through surgery</figcaption>
+    </figure>
+    <p>Jaw surgery works together with braces or aligners. Your teeth still need to move before and after the operation.</p>
+    <div class="grid two">
+      <div class="cell"><p class="num">6–18</p><p class="lbl">Months before surgery</p></div>
+      <div class="cell"><p class="num">3–6</p><p class="lbl">Months after surgery</p></div>
+    </div>
+    <p>Your orthodontist sends a <strong>readiness letter</strong> about 6–7 months before braces are expected to come off. That letter tells our clinic you are getting close. If we do not have the letter, we cannot take the next step.</p>
+
+    <h3>If you need teeth taken out</h3>
+    <p>If extractions are part of your plan, allow <strong>6–9 months of bone healing</strong> before surgery can go ahead.</p>
+
+    <h3>The OR Package</h3>
+    <p>We email you an OR Package. You complete it and send it back. Our clinic faxes it to UBC Hospital.</p>
+    <p>This first consent is <strong>paperwork only</strong>. It lets you go on the hospital waitlist. It is <strong>not</strong> a promise that you must have surgery.</p>
+    <div class="callout" role="note"><strong>Key point:</strong> Finishing the OR Package puts you on the UBC Hospital waitlist. The consent appointment does <em>not</em> put you on the waitlist.</div>
+
+    <h3>Once you are on the waitlist</h3>
+    <p>Book your Consent / surgery-planning appointment with Dr. Kang. We book it only after your orthodontist confirms you are ready.</p>
+    <p>Text the clinic with this message:</p>
+    <p class="note">ATTN: JO – I need to schedule Consent Appointment</p>
+    <div class="btns">
+      <a class="btn" href="sms:+16043710578?body=ATTN%3A%20JO%20-%20I%20need%20to%20schedule%20Consent%20Appointment">Text to book consent</a>
+      <a class="btn" href="tel:+16043710578">Call 604-371-0578</a>
+    </div>
+    <p>Expect at least <strong>about 6 months</strong> from waitlist to surgery.</p>
+
+    <h3>At the consent appointment</h3>
+    <p>You will confirm the plan, talk about risks and recovery, and sign the final consent. You will also give your <strong>1st and 2nd preferred surgery months</strong>.</p>
+    <p>Come ready with:</p>
+    <ul class="ready">
+      <li>2–3 quiet months that could work for you</li>
+      <li>Childcare planned for about 8 weeks</li>
+      <li>Finances ready (full payment is due at the final prep visit)</li>
+      <li>Help at home for at least 2 weeks after surgery</li>
+    </ul>
+  </article>
+
+  <article class="panel" id="consent" data-lock="stage">
+    <p class="lbl">Stage 02</p>
+    <h2>Consent &amp; Pre-op</h2>
+    <p class="intro">You have signed consent and shared your preferred months. This stretch is mostly waiting. That is normal.</p>
+    <h3>What happens now</h3>
+    <ul>
+      <li>You are already on the UBC Hospital waitlist from your completed OR Package.</li>
+      <li>Plan for at least about 6 months from waitlist to surgery.</li>
+      <li>Surgery dates are released about <strong>3–4 weeks before</strong> the operation.</li>
+      <li>When a date is offered, reply as soon as you can: <strong>YES – [DATE]</strong> or <strong>NO</strong>.</li>
+    </ul>
+    <div class="callout" role="note"><strong>If your preferred month changes,</strong> text or call the clinic right away. Do not wait. Life happens — school, work, childcare — and we would rather know early.</div>
+    <div class="btns">
+      <a class="btn" href="sms:+16043710578?body=ATTN%3A%20JO%20-%20I%20need%20to%20change%20my%20preferred%20surgery%20month">Text about a month change</a>
+      <a class="btn" href="tel:+16043710578">Call 604-371-0578</a>
+    </div>
+    <h3>While you wait</h3>
+    <ul>
+      <li>Keep all orthodontic visits. Your teeth still need to be ready.</li>
+      <li>Keep your childcare, time off, and help-at-home plans in mind.</li>
+      <li>Make sure we have the right phone number and home address for you.</li>
+      <li>You do not need to call to “check the list.” We will contact you when a date is available.</li>
+    </ul>
+    <p>If you have not heard from us for a while, that usually means a date has not been released yet. Questions are still welcome — text or call during clinic hours.</p>
+  </article>
+
+  <article class="panel" id="date" data-lock="stage">
+    <p class="lbl">Stage 03</p>
+    <h2>Your Surgery Date</h2>
+    <p class="intro">Dates come out about 3–4 weeks before surgery. When we offer you a date, reply as soon as you can: <strong>YES – [DATE]</strong> or <strong>NO</strong>.</p>
+    <div class="shots">
+      <figure class="shot">
+        <img src="photos/photo-scans.jpg" width="1024" height="1024" alt="An intraoral scanner beside a 3D model of teeth on a clinic screen. No patients are shown.">
+        <figcaption>Scans · at least 3 weeks before</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="photos/photo-hospital.jpg" width="1280" height="720" alt="A modern hospital building at sunset. Illustrative, not a photo of UBC Hospital.">
+        <figcaption>Surgery day · hospital admission</figcaption>
+      </figure>
+    </div>
+    <p>After you say yes, these are your jobs and deadlines.</p>
+    <ol class="jobs">
+      <li><span class="when">Within 1 week</span><div><h3>Return the Final Prep checklist</h3><p>Send it back within 1 week of saying yes.</p></div></li>
+      <li>
+        <span class="when">−21 days</span>
+        <div>
+          <h3>Scans at the Langley clinic</h3>
+          <p>Intraoral scans, X-rays / 3D CBCT. Wednesdays <strong>8:30 AM–2:00 PM</strong>. Done at least 3 weeks before surgery.</p>
+          <div class="callout" role="note" style="margin:10px 0 0"><strong>After scans:</strong> no orthodontic changes — no new brackets, hooks, aligner changes, or wire adjustments.</div>
+        </div>
+      </li>
+      <li><span class="when">−14 days</span><div><h3>Choose a compounding pharmacy</h3><p>You will need liquid medications. Chain pharmacies usually do not stock them. Send us the pharmacy’s <strong>name, phone, and fax</strong> by 2 weeks before surgery. See the <a href="#pharmacies">pharmacy list</a>.</p></div></li>
+      <li><span class="when">Before</span><div><h3>Confirm your home address</h3><p>We need the right address on file. The team will also phone you shortly before surgery.</p></div></li>
+      <li><span class="when">Final week</span><div><h3>Final prep appointment (mandatory)</h3><p>In Langley, no later than the Friday before surgery, usually <strong>3:00 PM</strong>. <strong>Full payment is due then</strong> (Visa, Mastercard, cash, or debit).</p></div></li>
+      <li><span class="when">−24 hours</span><div><h3>Arrival time</h3><p>We will give you your arrival time. Please do not call ahead to ask for it.</p></div></li>
+      <li><span class="when">Day 0</span><div><h3>UBC Hospital</h3><p>Go to the <strong>main admissions desk</strong> and arrive on time. Surgery takes about 1.5–2 hours under general anaesthetic. You stay one night. Discharge is around 10–11 AM. You need an escort or a ride home. Bring ID, your health card, and your documents.</p></div></li>
+      <li><span class="when">+7 days</span><div><h3>Follow-ups in Langley</h3><p>Weekly for the first 4 weeks. The first visit is 1 week after surgery. Follow-up continues to at least 8 weeks.</p></div></li>
+    </ol>
+    <h3>Count back from surgery day</h3>
+    <ol class="tl">
+      <li><span class="when">Day −21</span><strong>Scans in Langley</strong> Wednesday, 8:30 AM–2:00 PM, at least 3 weeks before</li>
+      <li><span class="when">Day −14</span><strong>Compounding pharmacy chosen</strong> Send us the name, phone, and fax</li>
+      <li><span class="when">Final week</span><strong>Prep appointment</strong> Mandatory, no later than Friday, usually 3:00 PM. Payment due.</li>
+      <li><span class="when">Day 0</span><strong>Surgery at UBC Hospital</strong> Main admissions desk. One night in hospital.</li>
+      <li><span class="when">Day +7</span><strong>First follow-up in Langley</strong> Then weekly for 4 weeks, continuing to at least 8 weeks</li>
+    </ol>
+    <p>Want tick-boxes and dates on your phone? Use <a href="../">Your Jaw Surgery Checklist</a>. It stays on this device only — nothing is sent to the clinic.</p>
+  </article>
+
+  <article class="panel" id="recovery" data-lock="stage">
+    <p class="lbl">Stage 04</p>
+    <h2>Recovery</h2>
+    <p class="intro">Healing takes patience. Follow Dr. Kang’s instructions for you. The notes below are a general guide, not a replacement for your own plan.</p>
+    <figure class="shot">
+      <img src="photos/photo-recovery.jpg" width="1280" height="720" alt="Ice packs, extra pillows for sleeping upright, and a nutrition shake on a bed. No straw.">
+      <figcaption>Home recovery · ice, rest, liquids</figcaption>
+    </figure>
+    <div class="grid two">
+      <div class="cell">
+        <h3 style="border:0;padding:0;margin:0 0 8px">The day before</h3>
+        <ul>
+          <li>Nothing to eat, and no alcohol, after midnight.</li>
+          <li>Clear fluids are OK until 3 hours before your arrival time.</li>
+          <li>Remove makeup, nail polish, jewelry, piercings, and false lashes.</li>
+          <li>Wear loose, comfortable clothes.</li>
+          <li>Have your escort and ice packs ready at home.</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <h3 style="border:0;padding:0;margin:0 0 8px">Right after surgery</h3>
+        <ul>
+          <li><strong>Ice constantly.</strong> Switch ice packs every 20–30 minutes. Stop only if the face shows signs of frostbite.</li>
+          <li>Keep your head up. Do not touch your nose. No bending or lifting.</li>
+          <li>Take your medications before the numbness wears off. Follow Dr. Kang’s prescription — do not guess doses from this page or from the internet.</li>
+          <li>Talk as little as you can. Brush gently and use your antibacterial rinse.</li>
+          <li>Drink shakes such as Ensure or Boost. <strong>No straws.</strong></li>
+        </ul>
+      </div>
+    </div>
+    <h3>Eating and chewing</h3>
+    <p>Your diet follows Dr. Kang’s guidance. If you follow aftercare, this is typically about <strong>2 weeks of a liquid diet</strong>, then a slow step-up as he directs.</p>
+    <p><strong>Do not chew until he clears it.</strong> That includes gum, meat, nuts, chewy bread, and “testing” your bite.</p>
+    <h3>For at least 8 weeks</h3>
+    <ul>
+      <li>No gym, running, swimming, lifting over 10 lb, or contact sports.</li>
+      <li>No smoking, vaping, cannabis, or alcohol until you are cleared.</li>
+      <li>Do not blow your nose. Sneeze with your mouth open.</li>
+      <li>An adult stays with you for the first 72 hours.</li>
+      <li>Sleep upright.</li>
+    </ul>
+    <div class="grid two">
+      <div class="cell">
+        <p class="num">8–10</p>
+        <p class="lbl">Months of numbness, usually temporary</p>
+        <p>Swelling often peaks around day 3 and lasts about 3 weeks. Many people lose 8–10 lb, then gain it back.</p>
+      </div>
+      <div class="cell">
+        <p class="num">3–6</p>
+        <p class="lbl">Weeks away from work or school</p>
+        <p>About 3 weeks for a desk job that does not need much talking. At least 4–6 weeks otherwise. Longer if your job is physical or talk-heavy.</p>
+      </div>
+    </div>
+    <h3>When to call the clinic</h3>
+    <p>Text or call <a href="tel:+16043710578">604-371-0578</a> if you have:</p>
+    <ul>
+      <li>Fever over 38.5 °C</li>
+      <li>Swelling that gets worse after day 4</li>
+      <li>Pus or a bad taste</li>
+      <li>A change in your bite</li>
+      <li>Numbness that is getting worse</li>
+      <li>A question before you follow advice from a website or an AI tool</li>
+    </ul>
+    <div class="alert" role="alert"><strong>Go to emergency</strong> for severe pain, trouble breathing, or heavy bleeding.</div>
+  </article>
+
+  <div class="lower">
+  <article class="panel" id="faq">
+    <p class="lbl">Help</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>When do I get on the hospital waitlist?</summary><div class="ans">When you complete the OR Package and the clinic faxes it to UBC Hospital. The consent appointment does not put you on the waitlist.</div></details>
+    <details class="faq"><summary>Does the OR Package mean I must have surgery?</summary><div class="ans">No. It is paperwork so you can join the waitlist. It is not a commitment to surgery.</div></details>
+    <details class="faq"><summary>How long is the wait?</summary><div class="ans">Plan for at least about 6 months from waitlist to surgery. Dates are released about 3–4 weeks before the operation.</div></details>
+    <details class="faq"><summary>What if my preferred month changes?</summary><div class="ans">Text or call the clinic as soon as you know. Do not wait until a date is offered.</div></details>
+    <details class="faq"><summary>When do I book the consent appointment?</summary><div class="ans">After your orthodontist confirms you are ready. Text the clinic: “ATTN: JO – I need to schedule Consent Appointment”.</div></details>
+    <details class="faq"><summary>Why a compounding pharmacy?</summary><div class="ans">You will need liquid medications after surgery. Most chain pharmacies do not stock them. Choose one at least 2 weeks before surgery and send us the name, phone, and fax.</div></details>
+    <details class="faq"><summary>When can I chew again?</summary><div class="ans">Not until Dr. Kang says it is OK. That includes gum, meat, nuts, chewy bread, and testing your bite.</div></details>
+    <details class="faq"><summary>Who do I call if I am worried?</summary><div class="ans">The Langley clinic at 604-371-0578 — you are welcome to text. Go to emergency for severe pain, trouble breathing, or heavy bleeding. Do not use 778-891-3892; that number is out of date.</div></details>
+  </article>
+
+  <article class="panel" id="contact">
+    <p class="lbl">Clinic</p>
+    <h2>Contacts</h2>
+    <p class="intro">Questions are welcome. Patients are welcome to text.</p>
+    <p>
+      <strong>Langley Oral &amp; Maxillofacial Surgery</strong><br>
+      #110-8661 201 Street, Langley, BC<br>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=110-8661+201+Street+Langley+BC">Open in Maps</a>
+    </p>
+    <div class="btns">
+      <a class="btn" href="sms:+16043710578">Text 604-371-0578</a>
+      <a class="btn" href="tel:+16043710578">Call 604-371-0578</a>
+      <a class="btn" href="mailto:langleyoms@gmail.com">Email langleyoms@gmail.com</a>
+    </div>
+    <p>Hours: Monday–Friday, 8 AM–4 PM</p>
+    <p class="old-num"><strong>Do not use 778-891-3892.</strong> That is an old number and will not reach the clinic.</p>
+  </article>
+
+  <article class="panel" id="pharmacies">
+    <p class="lbl">Medications</p>
+    <h2>Pharmacies</h2>
+    <p class="intro">Pick one and send us the name, phone, and fax by 2 weeks before surgery. You will need liquid medications. Chain pharmacies usually do not stock them.</p>
+    <figure class="shot">
+      <img src="photos/photo-pharmacy.jpg" width="1024" height="1024" alt="Amber compounding bottles and a mortar on a pharmacy counter. No labels or brand names.">
+      <figcaption>Liquid medications · compounding pharmacy</figcaption>
+    </figure>
+    <div class="pharmacies">
+      <div class="pharm"><p class="city">Abbotsford</p><p class="name">Whatcom Pharmacy &amp; Compounding</p><a href="tel:+16047441266">604-744-1266</a></div>
+      <div class="pharm"><p class="city">Burnaby</p><p class="name">Edmonds Pharmacy</p><a href="tel:+16045261110">604-526-1110</a></div>
+      <div class="pharm"><p class="city">Maple Ridge</p><p class="name">Maple Meadows Compounding</p><a href="tel:+16043804345">604-380-4345</a></div>
+      <div class="pharm"><p class="city">Mission</p><p class="name">Heritage Park Pharmacy</p><a href="tel:+16042892447">604-289-2447</a></div>
+      <div class="pharm"><p class="city">New Westminster</p><p class="name">Longevity Compounding Pharmacy</p><a href="tel:+16045447761">604-544-7761</a></div>
+      <div class="pharm"><p class="city">North Vancouver</p><p class="name">Northview Compounding Pharmacy</p><a href="tel:+16049049992">604-904-9992</a></div>
+      <div class="pharm"><p class="city">Port Coquitlam</p><p class="name">Pharmasave Port Coquitlam Northside</p><a href="tel:+16049429813">604-942-9813</a></div>
+      <div class="pharm"><p class="city">Richmond</p><p class="name">McCue Pharmacy</p><a href="tel:+16042789601">604-278-9601</a></div>
+      <div class="pharm"><p class="city">Surrey</p><p class="name">Surlang Pharmacy</p><a href="tel:+16045331041">604-533-1041</a></div>
+      <div class="pharm"><p class="city">Vancouver</p><p class="name">MacDonald’s Pharmacy</p><a href="tel:+16047380733">604-738-0733</a></div>
+      <div class="pharm"><p class="city">Vancouver</p><p class="name">Pharmasave City Square</p><a href="tel:+16045649288">604-564-9288</a></div>
+      <div class="pharm"><p class="city">Vancouver</p><p class="name">Integrative Pure Pharmacy</p><a href="tel:+16047318535">604-731-8535</a></div>
+      <div class="pharm"><p class="city">West Vancouver</p><p class="name">Integrative Pure Pharmacy</p><a href="tel:+16042813784">604-281-3784</a></div>
+    </div>
+  </article>
+  </div>
+</div>
+
+  <div class="horizon">
+    <div class="sun" aria-hidden="true"></div>
+    <p class="quote">Every step brings you closer to your new smile.</p>
+    <p class="related">Clinic pages:
+      <a href="../">Jaw surgery checklist</a>
+      · <a href="../intake-form/">Patient intake form</a>
+    </p>
+    <footer class="legal wrap">
+      <p>General information only. Always follow Dr. Kang’s specific instructions for you.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  document.documentElement.classList.add("js");
+  var open = document.documentElement.getAttribute("data-open-stage");
+  var lockable = { consult: 1, consent: 1, date: 1, recovery: 1 };
+  var ids = ["consult","consent","date","recovery","faq","contact","pharmacies"];
+  var jump = document.querySelectorAll(".jump a");
+  var spokes = document.querySelectorAll(".spoke");
+
+  function lockLink(el) {
+    el.removeAttribute("href");
+    el.setAttribute("tabindex", "-1");
+    el.setAttribute("aria-disabled", "true");
+    el.setAttribute("aria-label", (el.textContent || "").replace(/\s+/g, " ").trim() + " (locked)");
+    el.addEventListener("click", function (e) { e.preventDefault(); });
+  }
+
+  var skip = document.querySelector(".skip");
+  if (skip && open) skip.setAttribute("href", "#" + open);
+
+  if (open) {
+    Array.prototype.forEach.call(document.querySelectorAll("[data-lock='stage']"), function (el) {
+      var stage = el.getAttribute("data-stage") || el.id;
+      if (stage && stage !== open) {
+        if (el.tagName === "A") lockLink(el);
+      } else if (el.tagName === "A") {
+        el.setAttribute("aria-current", "true");
+      }
+    });
+    window.addEventListener("hashchange", function () {
+      var h = (location.hash || "").replace(/^#/, "");
+      if (lockable[h] && h !== open) {
+        if (history.replaceState) history.replaceState(null, "", location.pathname + location.search + "#" + open);
+        var panel = document.getElementById(open);
+        if (panel && panel.scrollIntoView) panel.scrollIntoView({ block: "start" });
+      }
+    });
+  }
+
+  function current() {
+    var y = window.scrollY + 72;
+    var active = open || ids[0];
+    ids.forEach(function (id) {
+      if (open && lockable[id] && id !== open) return;
+      var el = document.getElementById(id);
+      if (el && el.offsetTop <= y) active = id;
+    });
+    jump.forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      a.setAttribute("aria-current", href === "#" + active ? "true" : "false");
+    });
+    spokes.forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      if (href) a.setAttribute("aria-current", href === "#" + active ? "true" : "false");
+    });
+  }
+  window.addEventListener("scroll", current, { passive: true });
+  current();
+})();
+</script>
+</body>
+</html>
