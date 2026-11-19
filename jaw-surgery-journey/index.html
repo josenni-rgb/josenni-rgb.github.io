@@ -267,6 +267,26 @@ html.stage-lock[data-open-stage="recovery"] .jump a[data-stage="recovery"]{
   box-shadow:inset 0 -2px 0 #fff;
 }
 
+/* After-consult patients: consult-only. Later-stage details stay closed. */
+.consult-only{display:none}
+html.stage-lock[data-open-stage="consult"] .consult-only{display:block}
+html.stage-lock[data-open-stage="consult"] .rows > li.consult-only{display:grid}
+html.stage-lock[data-open-stage="consult"] .intro.staff-keep{display:none}
+html.stage-lock[data-open-stage="consult"] .consult-later{display:none!important}
+html.stage-lock[data-open-stage="consult"] .spoke[data-stage="pharmacies"]{
+  opacity:.38;
+  pointer-events:none;
+  cursor:default;
+  background:rgba(20,28,38,.18);
+}
+html.stage-lock[data-open-stage="consult"] .spoke[data-stage="pharmacies"] .lock{display:block}
+html.stage-lock[data-open-stage="consult"] .jump a[data-stage="pharmacies"]{
+  opacity:.35;
+  pointer-events:none;
+}
+html.stage-lock[data-open-stage="consult"] #pharmacies{display:none}
+html.stage-lock[data-open-stage="consult"] .path{display:none}
+
 @media (min-width:780px){
   .mindmap{max-width:560px;height:560px;margin:8px auto 12px}
   .mindmap-svg{display:block;width:100%;height:100%}
@@ -365,7 +385,8 @@ li{margin:6px 0}
   display:grid;grid-template-columns:18px 1fr;gap:10px;
   margin:0;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.18);
 }
-.rows li:last-child{border-bottom:0}
+.rows li:last-child,
+.rows > li.consult-later:nth-last-child(2){border-bottom:0}
 .dot{width:9px;height:9px;margin-top:8px;border-radius:50%;border:1px solid #fff;background:transparent}
 .rows strong{display:block;font-weight:600}
 .rows span{display:block;color:var(--ink-dim);font-size:.97rem}
@@ -577,7 +598,7 @@ footer.legal{
     <li class="s4"><a class="spoke" data-stage="recovery" data-lock="stage" href="#recovery"><svg aria-hidden="true"><use href="#leaf"/></svg> Recovery <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
     <li class="s5"><a class="spoke" data-stage="faq" href="#faq"><svg aria-hidden="true"><use href="#faq"/></svg> FAQ</a></li>
     <li class="s6"><a class="spoke" data-stage="contact" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg> Contacts</a></li>
-    <li class="s7"><a class="spoke" data-stage="pharmacies" href="#pharmacies"><svg aria-hidden="true"><use href="#rx"/></svg> Pharmacies</a></li>
+    <li class="s7"><a class="spoke" data-stage="pharmacies" href="#pharmacies"><svg aria-hidden="true"><use href="#rx"/></svg> Pharmacies <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
   </ol>
 </nav>
 <p class="hint hint-open">Tap a segment to jump</p>
@@ -624,17 +645,19 @@ footer.legal{
   <article class="panel" id="consult" data-lock="stage">
     <p class="lbl">Stage 01</p>
     <h2>After Your Consult</h2>
-    <p class="intro">You have met Dr. Kang and talked about jaw surgery. Next comes orthodontic treatment, paperwork, and a hospital waitlist. This is the full overview of the path ahead.</p>
+    <p class="intro staff-keep">You have met Dr. Kang and talked about jaw surgery. Next comes orthodontic treatment, paperwork, and a hospital waitlist. This is the full overview of the path ahead.</p>
+    <p class="intro consult-only">You have met Dr. Kang and talked about jaw surgery. Next comes you continuing treatment with your orthodontist.</p>
 
     <h3>The path at a glance</h3>
     <ol class="rows">
       <li><span class="dot" aria-hidden="true"></span><div><strong>Keep going with orthodontics</strong><span>Pre-surgical orthodontic treatment is usually 6–18 months.</span></div></li>
       <li><span class="dot" aria-hidden="true"></span><div><strong>Readiness letter from your orthodontist</strong><span>Sent about 6–7 months before orthodontic treatment is expected to finish. No letter means no next step.</span></div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><strong>OR Package → UBC Hospital waitlist</strong><span>You fill it in; the clinic faxes it to the hospital. This is how you get on the waitlist.</span></div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><strong>Consent / surgery-planning appointment</strong><span>Booked only after your orthodontist confirms you are ready. You sign final consent and share preferred months.</span></div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><strong>Wait for a surgery date</strong><span>Plan for at least about 6 months from waitlist to surgery. Dates come out 3–4 weeks before.</span></div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><strong>Surgery at UBC Hospital</strong><span>About 1.5–2 hours under general anaesthetic, usually one night in hospital.</span></div></li>
-      <li><span class="dot" aria-hidden="true"></span><div><strong>Recovery and follow-ups in Langley</strong><span>Weekly visits at first. Post-surgical orthodontics is usually another 3–6 months.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>OR Package → UBC Hospital waitlist</strong><span>You fill it in; the clinic faxes it to the hospital. This is how you get on the waitlist.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Consent / surgery-planning appointment</strong><span>Booked only after your orthodontist confirms you are ready. You sign final consent and share preferred months.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Wait for a surgery date</strong><span>Plan for at least about 6 months from waitlist to surgery. Dates come out 3–4 weeks before.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Surgery at UBC Hospital</strong><span>About 1.5–2 hours under general anaesthetic, usually one night in hospital.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Recovery and follow-ups in Langley</strong><span>Weekly visits at first. Post-surgical orthodontics is usually another 3–6 months.</span></div></li>
+      <li class="consult-only"><span class="dot" aria-hidden="true"></span><div><strong>Orthodontics keeps going</strong><span>3–6 months after surgery, orthodontic treatment continues to settle the bite.</span></div></li>
     </ol>
 
     <h3>Orthodontics keeps going</h3>
@@ -649,6 +672,7 @@ footer.legal{
     </div>
     <p>Your orthodontist sends a <strong>readiness letter</strong> about 6–7 months before orthodontic treatment is expected to finish. That letter tells our clinic you are getting close. If we do not have the letter, we cannot take the next step.</p>
 
+    <div class="consult-later">
     <h3>If you need teeth taken out</h3>
     <p>If extractions are part of your plan, allow <strong>6–9 months of bone healing</strong> before surgery can go ahead.</p>
 
@@ -676,6 +700,7 @@ footer.legal{
       <li>Finances ready (full payment is due at the final prep visit)</li>
       <li>Help at home for at least 2 weeks after surgery</li>
     </ul>
+    </div>
   </article>
 
   <article class="panel" id="consent" data-lock="stage">
@@ -820,10 +845,10 @@ footer.legal{
     <details class="faq"><summary>When do I get on the hospital waitlist?</summary><div class="ans">When you complete the OR Package and the clinic faxes it to UBC Hospital. The consent appointment does not put you on the waitlist.</div></details>
     <details class="faq"><summary>Does the OR Package mean I must have surgery?</summary><div class="ans">No. It is paperwork so you can join the waitlist. It is not a commitment to surgery.</div></details>
     <details class="faq"><summary>How long is the wait?</summary><div class="ans">Plan for at least about 6 months from waitlist to surgery. Dates are released about 3–4 weeks before the operation.</div></details>
-    <details class="faq"><summary>What if my preferred month changes?</summary><div class="ans">Text or call the clinic as soon as you know. Do not wait until a date is offered.</div></details>
-    <details class="faq"><summary>When do I book the consent appointment?</summary><div class="ans">After your orthodontist confirms you are ready. Text the clinic: “ATTN: JO – I need to schedule Consent Appointment”.</div></details>
-    <details class="faq"><summary>Why a compounding pharmacy?</summary><div class="ans">You will need liquid medications after surgery. Most chain pharmacies do not stock them. Choose one at least 2 weeks before surgery and send us the name, phone, and fax.</div></details>
-    <details class="faq"><summary>When can I chew again?</summary><div class="ans">Not until Dr. Kang says it is OK. That includes gum, meat, nuts, chewy bread, and testing your bite.</div></details>
+    <details class="faq consult-later"><summary>What if my preferred month changes?</summary><div class="ans">Text or call the clinic as soon as you know. Do not wait until a date is offered.</div></details>
+    <details class="faq consult-later"><summary>When do I book the consent appointment?</summary><div class="ans">After your orthodontist confirms you are ready. Text the clinic: “ATTN: JO – I need to schedule Consent Appointment”.</div></details>
+    <details class="faq consult-later"><summary>Why a compounding pharmacy?</summary><div class="ans">You will need liquid medications after surgery. Most chain pharmacies do not stock them. Choose one at least 2 weeks before surgery and send us the name, phone, and fax.</div></details>
+    <details class="faq consult-later"><summary>When can I chew again?</summary><div class="ans">Not until Dr. Kang says it is OK. That includes gum, meat, nuts, chewy bread, and testing your bite.</div></details>
     <details class="faq"><summary>Who do I call if I am worried?</summary><div class="ans">The Langley clinic at 604-371-0578 — you are welcome to text. Go to emergency for severe pain, trouble breathing, or heavy bleeding. Do not use 778-891-3892; that number is out of date.</div></details>
   </article>
 
@@ -876,8 +901,8 @@ footer.legal{
     <div class="sun" aria-hidden="true"></div>
     <p class="quote">Every step brings you closer to your new smile.</p>
     <p class="related">Clinic pages:
-      <a href="../">Jaw surgery checklist</a>
-      · <a href="../intake-form/">Patient intake form</a>
+      <a class="consult-later" href="../">Jaw surgery checklist</a><span class="consult-later"> · </span>
+      <a href="../intake-form/">Patient intake form</a>
     </p>
     <footer class="legal wrap">
       <p>General information only. Always follow Dr. Kang’s specific instructions for you.</p>
@@ -915,9 +940,21 @@ footer.legal{
         el.setAttribute("aria-current", "true");
       }
     });
+    if (open === "consult") {
+      Array.prototype.forEach.call(document.querySelectorAll("[data-stage='pharmacies']"), function (el) {
+        if (el.tagName === "A") lockLink(el);
+      });
+    }
+    function stageHashBlocked(h) {
+      return (lockable[h] && h !== open) || (open === "consult" && h === "pharmacies");
+    }
+    var initialHash = (location.hash || "").replace(/^#/, "");
+    if (stageHashBlocked(initialHash) && history.replaceState) {
+      history.replaceState(null, "", location.pathname + location.search + "#" + open);
+    }
     window.addEventListener("hashchange", function () {
       var h = (location.hash || "").replace(/^#/, "");
-      if (lockable[h] && h !== open) {
+      if (stageHashBlocked(h)) {
         if (history.replaceState) history.replaceState(null, "", location.pathname + location.search + "#" + open);
         var panel = document.getElementById(open);
         if (panel && panel.scrollIntoView) panel.scrollIntoView({ block: "start" });
@@ -930,8 +967,9 @@ footer.legal{
     var active = open || ids[0];
     ids.forEach(function (id) {
       if (open && lockable[id] && id !== open) return;
+      if (open === "consult" && id === "pharmacies") return;
       var el = document.getElementById(id);
-      if (el && el.offsetTop <= y) active = id;
+      if (el && el.offsetParent && el.offsetTop <= y) active = id;
     });
     jump.forEach(function (a) {
       var href = a.getAttribute("href") || "";
