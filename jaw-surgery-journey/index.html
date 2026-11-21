@@ -286,6 +286,12 @@ html.stage-lock[data-open-stage="consult"] .jump a[data-stage="pharmacies"]{
 }
 html.stage-lock[data-open-stage="consult"] #pharmacies{display:none}
 html.stage-lock[data-open-stage="consult"] .path{display:none}
+/* Checklist is for patients who already have a surgery date (staff, surgery, recovery). */
+html.stage-lock[data-open-stage="consult"] .has-date-only,
+html.stage-lock[data-open-stage="consent"] .has-date-only{display:none!important}
+.clinic-call-only{display:none}
+html.stage-lock[data-open-stage="recovery"] .emergency-only{display:none}
+html.stage-lock[data-open-stage="recovery"] .clinic-call-only{display:inline}
 
 @media (min-width:780px){
   .mindmap{max-width:560px;height:560px;margin:8px auto 12px}
@@ -769,7 +775,7 @@ footer.legal{
       <li><span class="when">Day 0</span><strong>Surgery at UBC Hospital</strong> Main admissions desk. One night in hospital.</li>
       <li><span class="when">Day +7</span><strong>First follow-up in Langley</strong> Then weekly for 4 weeks, continuing to at least 8 weeks</li>
     </ol>
-    <p>Want tick-boxes and dates on your phone? Use <a href="../">Your Jaw Surgery Checklist</a>. It stays on this device only — nothing is sent to the clinic.</p>
+    <p class="has-date-only">Want tick-boxes and dates on your phone? Use <a href="../">Your Jaw Surgery Checklist</a>. It stays on this device only — nothing is sent to the clinic.</p>
   </article>
 
   <article class="panel" id="recovery" data-lock="stage">
@@ -835,7 +841,8 @@ footer.legal{
       <li>Numbness that is getting worse</li>
       <li>A question before you follow advice from a website or an AI tool</li>
     </ul>
-    <div class="alert" role="alert"><strong>Go to emergency</strong> for severe pain, trouble breathing, or heavy bleeding.</div>
+    <div class="alert" role="alert">For severe pain, trouble breathing, or heavy bleeding, call the clinic right away at <a href="tel:+16043710578">604-371-0578</a>.</div>
+    <p class="has-date-only">Want tick-boxes and dates on your phone? Use <a href="../">Your Jaw Surgery Checklist</a>. It stays on this device only — nothing is sent to the clinic.</p>
   </article>
 
   <div class="lower">
@@ -849,7 +856,7 @@ footer.legal{
     <details class="faq consult-later"><summary>When do I book the consent appointment?</summary><div class="ans">After your orthodontist confirms you are ready. Text the clinic: “ATTN: JO – I need to schedule Consent Appointment”.</div></details>
     <details class="faq consult-later"><summary>Why a compounding pharmacy?</summary><div class="ans">You will need liquid medications after surgery. Most chain pharmacies do not stock them. Choose one at least 2 weeks before surgery and send us the name, phone, and fax.</div></details>
     <details class="faq consult-later"><summary>When can I chew again?</summary><div class="ans">Not until Dr. Kang says it is OK. That includes gum, meat, nuts, chewy bread, and testing your bite.</div></details>
-    <details class="faq"><summary>Who do I call if I am worried?</summary><div class="ans">The Langley clinic at 604-371-0578 — you are welcome to text. Go to emergency for severe pain, trouble breathing, or heavy bleeding. Do not use 778-891-3892; that number is out of date.</div></details>
+    <details class="faq"><summary>Who do I call if I am worried?</summary><div class="ans">The Langley clinic at 604-371-0578 — you are welcome to text. <span class="emergency-only">Go to emergency for severe pain, trouble breathing, or heavy bleeding.</span><span class="clinic-call-only">For severe pain, trouble breathing, or heavy bleeding, call the clinic right away at <a href="tel:+16043710578">604-371-0578</a>.</span> Do not use 778-891-3892; that number is out of date.</div></details>
   </article>
 
   <article class="panel" id="contact">
@@ -900,10 +907,7 @@ footer.legal{
   <div class="horizon">
     <div class="sun" aria-hidden="true"></div>
     <p class="quote">Every step brings you closer to your new smile.</p>
-    <p class="related">Clinic pages:
-      <a class="consult-later" href="../">Jaw surgery checklist</a><span class="consult-later"> · </span>
-      <a href="../intake-form/">Patient intake form</a>
-    </p>
+    <p class="related has-date-only"><a href="../">Jaw surgery checklist</a></p>
     <footer class="legal wrap">
       <p>General information only. Always follow Dr. Kang’s specific instructions for you.</p>
     </footer>
