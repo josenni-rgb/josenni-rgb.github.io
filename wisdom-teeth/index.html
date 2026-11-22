@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#5E6E7C">
+<meta name="description" content="Your wisdom teeth journey with Langley Oral &amp; Maxillofacial Surgery — from consult to recovery.">
+<title>Your Wisdom Teeth Journey | Langley Oral &amp; Maxillofacial Surgery</title>
+<link rel="preload" href="../shared/fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../shared/journey.css">
+<script>
+(function () {
+  "use strict";
+  var map = {
+    "after-consult": "consult", consult: "consult",
+    before: "before", "pre-op": "before", preop: "before",
+    surgery: "surgery", "surgery-day": "surgery",
+    recovery: "recovery"
+  };
+  var stage = "";
+  try {
+    (location.search || "").replace(/^\?/, "").split("&").forEach(function (p) {
+      var kv = p.split("=");
+      if (decodeURIComponent(kv[0] || "") === "stage") {
+        stage = decodeURIComponent((kv[1] || "").replace(/\+/g, " ")).toLowerCase();
+      }
+    });
+  } catch (e) {}
+  if (map[stage]) {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "stage-lock";
+    document.documentElement.setAttribute("data-open-stage", map[stage]);
+  }
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#consult">Skip to journey stages</a>
+
+<svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="heart" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 17.6C6.8 13.8 3.5 10.7 3.5 7.4 3.5 5.2 5.1 3.6 7.3 3.6c1.3 0 2.5.6 3.2 1.6.7-1 1.9-1.6 3.2-1.6 2.2 0 3.8 1.6 3.8 3.8 0 3.3-3.3 6.4-8 10.2z"/></symbol>
+  <symbol id="leaves" viewBox="0 0 80 16" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 8h64"/><path d="M24 8c-2-4-8-6-14-6 2 4 8 6 14 6z"/><path d="M56 8c2-4 8-6 14-6-2 4-8 6-14 6z"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M5 7h14v8H9l-4 3V7z"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="12" r="7.5"/><path d="M12 8v4l3 2"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="4.5" y="5.5" width="15" height="14" rx="1"/><path d="M8 3.5v4M16 3.5v4M4.5 10h15"/></symbol>
+  <symbol id="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M6 18c7-1 12-8 13-14-6 1-13 6-13 14z"/><path d="M8 14c2-1 5-4 7-8"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M8 4h3l1 4-2 1a10 10 0 0 0 5.5 5.5l1-2 4 1v3A16 16 0 0 1 7 6.2 2 2 0 0 1 8 4z"/></symbol>
+  <symbol id="icon-faq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="7.5"/><path d="M9.6 10a2.4 2.4 0 1 1 4 1.6c-.7.7-1.6 1.1-1.6 2.2"/><path d="M12 16.6h.01"/></symbol>
+  <symbol id="alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M12 4.5 3.8 19h16.4L12 4.5z"/><path d="M12 10v4.5"/><path d="M12 17.2h.01"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="6" y="11" width="12" height="9" rx="1"/><path d="M8.5 11V8.2a3.5 3.5 0 0 1 7 0V11"/></symbol>
+</svg>
+
+<header class="hero wrap">
+  <p class="kicker">Langley Oral &amp; Maxillofacial Surgery · Dr. Ben Kang</p>
+  <h1><span>Your Wisdom</span><span>Teeth</span></h1>
+  <p class="yearish">Journey</p>
+  <p class="lede">From consult, to surgery day, to a calm recovery at home. Tap a stage on the wheel that matches where you are today.</p>
+  <p class="print-url">https://josenni-rgb.github.io/wisdom-teeth/</p>
+  <figure class="hero-art">
+    <svg viewBox="0 0 400 160" role="img" aria-label="White line drawing of two wisdom teeth above a dotted path">
+      <path d="M40 128 C120 108, 280 148, 360 118" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2" stroke-dasharray="3 6"/>
+      <g fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M118 96c-10 2-18-8-16-22 1-9 6-18 14-28 4 8 12 12 20 10 6-14 18-22 28-18 2 12-2 26-12 34 8 6 10 18 4 26-8 10-22 8-38-2z"/>
+        <path d="M248 102c-9 4-20-6-18-20 2-10 8-20 16-30 5 8 14 11 22 8 7-16 20-24 30-18 1 13-4 27-14 35 9 6 12 18 6 26-8 11-24 10-42-1z"/>
+        <circle cx="40" cy="128" r="3.2"/><circle cx="200" cy="128" r="3.2"/><circle cx="360" cy="118" r="3.2"/>
+      </g>
+    </svg>
+    <figcaption>Wisdom teeth · a quiet path from consult to home</figcaption>
+  </figure>
+</header>
+
+<section class="facts wrap" aria-label="Key facts on this path">
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="0"/>
+      </svg>
+      <span class="n">4</span>
+    </div>
+    <div class="lbl">Stages on this path</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="80"/>
+      </svg>
+      <span class="n small">1–3</span>
+    </div>
+    <div class="lbl">Days when swelling often peaks</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="50"/>
+      </svg>
+      <span class="n">24h</span>
+    </div>
+    <div class="lbl">Wait before rinsing the site</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="90"/>
+      </svg>
+      <span class="n">7</span>
+    </div>
+    <div class="lbl">Days to avoid straws and smoking</div>
+  </div>
+</section>
+
+<nav class="mindmap" id="map" aria-label="Journey map">
+  <svg class="mindmap-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <circle cx="200" cy="200" r="186" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>
+    <path d="M200 200 L119.3 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L280.7 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L381.3 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L345.4 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L200 386" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L54.6 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L18.7 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <circle cx="200" cy="200" r="86" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1" stroke-dasharray="4 4"/>
+  </svg>
+  <div class="hub">
+    <svg class="heart" aria-hidden="true"><use href="#heart"/></svg>
+    <strong>Your Wisdom<br>Teeth<br>Journey</strong>
+    <svg class="flourish" aria-hidden="true"><use href="#leaves"/></svg>
+  </div>
+  <ol class="spokes">
+    <li class="s1"><a class="spoke" data-stage="consult" data-lock="stage" href="#consult"><svg aria-hidden="true"><use href="#chat"/></svg> After Consult <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s2"><a class="spoke" data-stage="before" data-lock="stage" href="#before"><svg aria-hidden="true"><use href="#clock"/></svg> Before Surgery <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s3"><a class="spoke" data-stage="surgery" data-lock="stage" href="#surgery"><svg aria-hidden="true"><use href="#cal"/></svg> Surgery Day <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s4"><a class="spoke" data-stage="recovery" data-lock="stage" href="#recovery"><svg aria-hidden="true"><use href="#leaf"/></svg> Recovery <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s5"><a class="spoke" data-stage="urgent" href="#urgent"><svg aria-hidden="true"><use href="#alert"/></svg> When to Call</a></li>
+    <li class="s6"><a class="spoke" data-stage="faq" href="#faq"><svg aria-hidden="true"><use href="#icon-faq"/></svg> FAQ</a></li>
+    <li class="s7"><a class="spoke" data-stage="contact" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg> Contacts</a></li>
+  </ol>
+</nav>
+<p class="hint hint-open">Tap a segment to jump</p>
+<p class="hint hint-lock">Your care team will unlock the next step.</p>
+
+<section class="path wrap" aria-labelledby="path-title">
+  <h2 id="path-title">The path · consult to recovery</h2>
+  <svg class="path-svg path-vert" viewBox="0 0 320 360" role="img" aria-label="Timeline from consult to recovery">
+    <path d="M40 20 C80 70, 40 110, 90 150 S200 210, 140 260 S60 310, 160 340" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="1.6">
+      <circle cx="40" cy="20" r="3.2" fill="none" stroke="#fff"/><text x="56" y="24">CONSULT</text>
+      <circle cx="62" cy="88" r="3.2" fill="none" stroke="#fff"/><text x="78" y="92">BEFORE</text>
+      <circle cx="90" cy="150" r="3.2" fill="none" stroke="#fff"/><text x="106" y="154">SURGERY DAY</text>
+      <circle cx="168" cy="210" r="3.2" fill="none" stroke="#fff"/><text x="184" y="214">DAYS 1–3</text>
+      <circle cx="140" cy="260" r="3.2" fill="none" stroke="#fff"/><text x="156" y="264">FIRST WEEK</text>
+      <circle cx="158" cy="338" r="3.2" fill="none" stroke="#fff"/><text x="174" y="342">WEEKS 2+</text>
+    </g>
+  </svg>
+  <svg class="path-svg path-horiz" viewBox="0 0 860 160" role="img" aria-label="Timeline from consult to recovery">
+    <path d="M30 110 C120 110, 150 40, 250 48 S380 150, 500 70 S680 20, 830 90" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.3"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="2">
+      <circle cx="40" cy="108" r="3.4" fill="none" stroke="#fff"/><text x="28" y="132">CONSULT</text>
+      <circle cx="190" cy="52" r="3.4" fill="none" stroke="#fff"/><text x="168" y="38">BEFORE</text>
+      <circle cx="340" cy="108" r="3.4" fill="none" stroke="#fff"/><text x="292" y="132">SURGERY DAY</text>
+      <circle cx="500" cy="70" r="3.4" fill="none" stroke="#fff"/><text x="470" y="56">DAYS 1–3</text>
+      <circle cx="660" cy="40" r="3.4" fill="none" stroke="#fff"/><text x="616" y="26">FIRST WEEK</text>
+      <circle cx="820" cy="88" r="3.4" fill="none" stroke="#fff"/><text x="786" y="112">WEEKS 2+</text>
+    </g>
+  </svg>
+</section>
+
+<nav class="jump no-print" aria-label="Jump to a stage">
+  <a href="#consult" data-stage="consult" data-lock="stage">Consult</a>
+  <a href="#before" data-stage="before" data-lock="stage">Before</a>
+  <a href="#surgery" data-stage="surgery" data-lock="stage">Surgery</a>
+  <a href="#recovery" data-stage="recovery" data-lock="stage">Recovery</a>
+  <a href="#urgent" data-stage="urgent">Call</a>
+  <a href="#faq" data-stage="faq">FAQ</a>
+  <a href="#contact" data-stage="contact">Clinic</a>
+</nav>
+
+<main>
+<div class="wrap">
+  <article class="panel" id="consult" data-lock="stage">
+    <p class="lbl">Stage 01</p>
+    <h2>After Your Consult</h2>
+    <p class="intro staff-keep">You have met Dr. Kang and talked about your wisdom teeth. This is the full overview of the path ahead — from getting ready, to surgery day, to healing at home.</p>
+    <p class="intro consult-only">You have met Dr. Kang and talked about your wisdom teeth. For now, keep this page for the plan you discussed. Your care team will unlock the next step when it is time.</p>
+
+    <h3>The path at a glance</h3>
+    <ol class="rows">
+      <li><span class="dot" aria-hidden="true"></span><div><strong>A plan that fits you</strong><span>Which teeth, whether you will have local anaesthetic or sedation, and roughly when surgery can be booked.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Questions are welcome</strong><span>Ask about time off, eating, and what the first few days at home usually feel like.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Get ready the day before</strong><span>Fasting if you are sedated, a ride home, prescriptions filled, and comfortable clothes.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Surgery day</strong><span>Most wisdom-tooth visits are done in the clinic. You go home the same day.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Recovery</strong><span>Swelling often peaks around days 1–3. Soft food, rest, and gentle care of the sites.</span></div></li>
+      <li class="consult-only"><span class="dot" aria-hidden="true"></span><div><strong>We will guide the next step</strong><span>When a date is set, you will get a link for getting ready and for surgery day.</span></div></li>
+    </ol>
+
+    <h3>What we usually talk about</h3>
+    <p>Wisdom teeth are the last molars at the back of the mouth. They may be partly through the gum, fully under the gum, or pressing on the tooth in front. Imaging helps us see the roots and nearby nerves so the plan is as gentle as it can be.</p>
+    <div class="grid two">
+      <div class="cell"><p class="num">Local</p><p class="lbl">You are awake, the area is numb</p></div>
+      <div class="cell"><p class="num">Sedation</p><p class="lbl">You are relaxed; you need a ride home</p></div>
+    </div>
+    <p>Your own plan is the one that matters. Follow the instructions Dr. Kang gives you if they differ from this page.</p>
+  </article>
+
+  <article class="panel" id="before" data-lock="stage">
+    <p class="lbl">Stage 02</p>
+    <h2>Before Surgery</h2>
+    <p class="intro">A little preparation makes the day smoother. Use this as a checklist the day before and the morning of your visit.</p>
+    <h3>If you are being sedated</h3>
+    <ul>
+      <li>Follow the fasting instructions we give you. A common pattern is nothing to eat after midnight, with clear fluids only up to the time we specify.</li>
+      <li>Do not drink alcohol the night before.</li>
+      <li>Take only the medicines we have said you should take, with a sip of water if allowed.</li>
+      <li><strong>Arrange a responsible adult to take you home.</strong> You cannot drive, bike, or go home alone after sedation.</li>
+    </ul>
+    <div class="callout" role="note"><strong>Local anaesthetic only?</strong> You can usually eat a light meal beforehand and may not need a ride. We will tell you which path is yours.</div>
+    <h3>Prescriptions</h3>
+    <p>Fill any prescriptions we give you <strong>before</strong> surgery day so they are ready at home. Do not start extra medicines or change doses on your own. If a pharmacy has a question, they can call us at <span class="placeholder">[Clinic phone]</span>.</p>
+    <h3>What to wear and bring</h3>
+    <ul class="ready">
+      <li>Loose, comfortable clothes with short sleeves if you may have an IV</li>
+      <li>No makeup, jewelry, contact lenses, or nail polish if you are sedated</li>
+      <li>Your health card and a photo ID</li>
+      <li>A list of your medicines and any allergies</li>
+    </ul>
+    <h3>At home, set out</h3>
+    <ul>
+      <li>Ice packs or a bag of frozen peas wrapped in a thin cloth</li>
+      <li>Extra pillows so you can rest with your head up</li>
+      <li>Soft foods: yoghurt, applesauce, lukewarm soup, mashed potato, smoothies <strong>without a straw</strong></li>
+      <li>Gauze as we provided, and a phone within reach</li>
+    </ul>
+  </article>
+
+  <article class="panel" id="surgery" data-lock="stage">
+    <p class="lbl">Stage 03</p>
+    <h2>Surgery Day</h2>
+    <p class="intro">Most wisdom-tooth visits happen here in the clinic. You go home the same day. Arrive a little early so check-in is unhurried.</p>
+    <ol class="jobs">
+      <li><span class="when">Arrive</span><div><h3>Check in</h3><p>Confirm who is taking you home if you are sedated. Let us know if anything about your health has changed since your consult.</p></div></li>
+      <li><span class="when">Visit</span><div><h3>The procedure</h3><p>You will be numb. If you are sedated, you will feel very relaxed. Time in the chair varies with how many teeth and how they sit — often well under an hour of surgical time, sometimes a little longer.</p></div></li>
+      <li><span class="when">After</span><div><h3>Bite on gauze</h3><p>Steady, gentle pressure helps a clot form. A little oozing on the gauze is expected. We will show you how to change it.</p></div></li>
+      <li><span class="when">Home</span><div><h3>Go home and rest</h3><p>Start ice on the cheeks. Take your medicines as written, before numbness fully fades if we have asked you to. An adult should stay with you if you were sedated.</p></div></li>
+    </ol>
+    <div class="callout" role="note"><strong>No straws, no smoking, no vaping, and no spitting</strong> for the first week. Those habits can dislodge the clot that protects the site.</div>
+  </article>
+
+  <article class="panel" id="recovery" data-lock="stage">
+    <p class="lbl">Stage 04</p>
+    <h2>Recovery</h2>
+    <p class="intro">Healing is gradual. The notes below are a general guide. Follow Dr. Kang’s instructions for you if they differ.</p>
+    <div class="grid two">
+      <div class="cell">
+        <h3 class="flush">Days 1–3</h3>
+        <ul>
+          <li>Swelling often grows for the first two or three days. That is expected.</li>
+          <li>Ice the cheeks 20 minutes on, 20 minutes off, while you are awake, for the first day or two.</li>
+          <li>Rest with your head up. No heavy lifting or hard exercise.</li>
+          <li>Soft, cool or lukewarm food. Chew away from the sites. <strong>No straws.</strong></li>
+          <li>Light pink saliva is common. Firm pressure with gauze for 20 minutes if you see more blood.</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <h3 class="flush">The first week</h3>
+        <ul>
+          <li>After 24 hours, begin gentle salt-water rinses if we asked you to — do not swish hard.</li>
+          <li>Brush the rest of your teeth carefully. Keep the brush away from the sockets at first.</li>
+          <li>Stitches often dissolve on their own. Do not pull at them.</li>
+          <li>Pain that eases, then sharpens again around days 3–5, can mean the clot was lost. Call us — this is treatable.</li>
+          <li>Bruising of the cheek or neck can appear and then fade.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Weeks 2 and after</h3>
+    <ul>
+      <li>Most people return to usual meals and work as comfort allows. Bone in the sockets keeps filling in for months.</li>
+      <li>Keep the area clean. Food can collect in the hollows; a gentle rinse after meals helps.</li>
+      <li>Come to any follow-up we booked. If something does not feel right, you do not need to wait for that visit — call us.</li>
+    </ul>
+    <div class="grid two">
+      <div class="cell">
+        <p class="num">2–3</p>
+        <p class="lbl">Days off for many desk jobs</p>
+        <p>Longer if several teeth were removed, if your work is physical, or if you were sedated.</p>
+      </div>
+      <div class="cell">
+        <p class="num">7</p>
+        <p class="lbl">Days without straws, smoking, or vaping</p>
+        <p>These protect the clot. If you use tobacco, this is a good week to pause.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="lower">
+  <article class="panel" id="urgent">
+    <p class="lbl">Urgent</p>
+    <h2>When to Call Us</h2>
+    <p class="intro">Call us, or go to emergency, if any of the following happen. You are not bothering us.</p>
+    <div class="alert" role="alert">
+      <strong>Call us or go to emergency if you have:</strong>
+      <ul>
+        <li>Heavy bleeding that will not stop with firm gauze pressure for 20 minutes</li>
+        <li>Fever</li>
+        <li>Trouble swallowing or breathing</li>
+        <li>Swelling that gets worse after day 3</li>
+        <li>Numbness of the lip, chin, or tongue that has not resolved as discussed at your visit</li>
+      </ul>
+    </div>
+    <p>Clinic hours: Monday–Friday, 8 AM–4 PM · <span class="placeholder">[Clinic phone]</span></p>
+    <p>After hours: <span class="placeholder">[After-hours line]</span>. If you cannot reach us and you are having trouble breathing or bleeding heavily, go to the nearest emergency department.</p>
+  </article>
+
+  <article class="panel" id="faq">
+    <p class="lbl">Help</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Do I have to fast?</summary><div class="ans">Only if you are having sedation or a general anaesthetic. Follow the written fasting instructions we give you. If you are having local anaesthetic only, a light meal is usually fine.</div></details>
+    <details class="faq"><summary>Can I drive myself home?</summary><div class="ans">Not if you were sedated. You need a responsible adult to take you home and stay with you. After local anaesthetic only, you can usually drive if you feel well.</div></details>
+    <details class="faq"><summary>When can I eat?</summary><div class="ans">Start with soft, cool foods once the numbness begins to fade. Avoid hot drinks, seeds, nuts, and crunchy chips while the sites are tender. No straws for a week.</div></details>
+    <details class="faq consult-later"><summary>What is a dry socket?</summary><div class="ans">If the protective clot is lost, pain can increase a few days after surgery. It is uncomfortable and it is treatable. Call us rather than waiting it out.</div></details>
+    <details class="faq consult-later"><summary>When can I go back to work or school?</summary><div class="ans">Many people with desk work take 2–3 days. Allow more time if several teeth were removed or if your job is physical.</div></details>
+    <details class="faq"><summary>Who do I call if I am worried?</summary><div class="ans">The clinic at <span class="placeholder">[Clinic phone]</span> during hours. After hours, use <span class="placeholder">[After-hours line]</span>. For heavy bleeding, trouble breathing, or trouble swallowing, go to emergency if you cannot reach us.</div></details>
+  </article>
+
+  <article class="panel" id="contact">
+    <p class="lbl">Clinic</p>
+    <h2>Contacts</h2>
+    <p class="intro">Questions are welcome. Patients are welcome to text once <span class="placeholder">[Clinic phone]</span> is confirmed.</p>
+    <p>
+      <strong>Langley Oral &amp; Maxillofacial Surgery</strong><br>
+      #110-8661 201 Street, Langley, BC<br>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=110-8661+201+Street+Langley+BC">Open in Maps</a>
+    </p>
+    <p>Call or text: <span class="placeholder">[Clinic phone]</span><br>
+       Email: <span class="placeholder">[Clinic email]</span><br>
+       After hours: <span class="placeholder">[After-hours line]</span></p>
+    <p>Hours: Monday–Friday, 8 AM–4 PM</p>
+  </article>
+  </div>
+</div>
+
+  <div class="horizon">
+    <div class="sun" aria-hidden="true"></div>
+    <p class="quote">Rest now. Healing has already begun.</p>
+    <p class="related">Other journeys:
+      <a href="../implants/">Implants &amp; grafts</a>
+      · <a href="../lesions/">Biopsy &amp; lesions</a>
+      · <a href="../jaw-surgery-journey/">Jaw surgery</a>
+      · <a href="../journeys/">All journeys</a>
+    </p>
+    <footer class="legal wrap">
+      <p>General information only. Always follow Dr. Kang’s specific instructions for you.</p>
+    </footer>
+  </div>
+</main>
+<script src="../shared/journey.js"></script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#5E6E7C">
+<meta name="description" content="Your dental implant and bone graft journey with Langley Oral &amp; Maxillofacial Surgery — from consult and CBCT to restoration.">
+<title>Your Dental Implant &amp; Bone Graft Journey | Langley Oral &amp; Maxillofacial Surgery</title>
+<link rel="preload" href="../shared/fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../shared/journey.css">
+<script>
+(function () {
+  "use strict";
+  var map = {
+    "after-consult": "consult", consult: "consult", scan: "consult", cbct: "consult",
+    before: "before", "pre-op": "before", preop: "before",
+    surgery: "surgery", "surgery-day": "surgery", graft: "surgery", implant: "surgery",
+    healing: "healing", integration: "healing",
+    restore: "restore", restoration: "restore", handoff: "restore", "hand-off": "restore"
+  };
+  var stage = "";
+  try {
+    (location.search || "").replace(/^\?/, "").split("&").forEach(function (p) {
+      var kv = p.split("=");
+      if (decodeURIComponent(kv[0] || "") === "stage") {
+        stage = decodeURIComponent((kv[1] || "").replace(/\+/g, " ")).toLowerCase();
+      }
+    });
+  } catch (e) {}
+  if (map[stage]) {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "stage-lock";
+    document.documentElement.setAttribute("data-open-stage", map[stage]);
+  }
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#consult">Skip to journey stages</a>
+
+<svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="heart" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 17.6C6.8 13.8 3.5 10.7 3.5 7.4 3.5 5.2 5.1 3.6 7.3 3.6c1.3 0 2.5.6 3.2 1.6.7-1 1.9-1.6 3.2-1.6 2.2 0 3.8 1.6 3.8 3.8 0 3.3-3.3 6.4-8 10.2z"/></symbol>
+  <symbol id="leaves" viewBox="0 0 80 16" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 8h64"/><path d="M24 8c-2-4-8-6-14-6 2 4 8 6 14 6z"/><path d="M56 8c2-4 8-6 14-6-2 4-8 6-14 6z"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M5 7h14v8H9l-4 3V7z"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="12" r="7.5"/><path d="M12 8v4l3 2"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="4.5" y="5.5" width="15" height="14" rx="1"/><path d="M8 3.5v4M16 3.5v4M4.5 10h15"/></symbol>
+  <symbol id="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M6 18c7-1 12-8 13-14-6 1-13 6-13 14z"/><path d="M8 14c2-1 5-4 7-8"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M8 4h3l1 4-2 1a10 10 0 0 0 5.5 5.5l1-2 4 1v3A16 16 0 0 1 7 6.2 2 2 0 0 1 8 4z"/></symbol>
+  <symbol id="icon-faq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="7.5"/><path d="M9.6 10a2.4 2.4 0 1 1 4 1.6c-.7.7-1.6 1.1-1.6 2.2"/><path d="M12 16.6h.01"/></symbol>
+  <symbol id="crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M4 16.5 6.5 8l4 5 3-6 3 6 3.5-5L20 16.5H4z"/><path d="M6 19h12"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="6" y="11" width="12" height="9" rx="1"/><path d="M8.5 11V8.2a3.5 3.5 0 0 1 7 0V11"/></symbol>
+</svg>
+
+<header class="hero wrap">
+  <p class="kicker">Langley Oral &amp; Maxillofacial Surgery · Dr. Ben Kang</p>
+  <h1 class="tight"><span>Implant</span><span>&amp; Graft</span></h1>
+  <p class="yearish">Journey</p>
+  <p class="lede">From your consult and 3D scan, to surgery, to quiet months of healing — then your dentist places the tooth. Tap the stage that matches where you are today.</p>
+  <p class="print-url">https://josenni-rgb.github.io/implants/</p>
+  <figure class="hero-art">
+    <svg viewBox="0 0 400 160" role="img" aria-label="White line drawing of an implant post under a dotted arch">
+      <path d="M36 118 C110 78, 290 78, 364 118" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>
+      <g fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M200 38v22"/>
+        <rect x="188" y="58" width="24" height="10" rx="1"/>
+        <path d="M194 68v48"/>
+        <path d="M194 76h12M194 84h12M194 92h12M194 100h12M194 108h12"/>
+        <path d="M188 116h24"/>
+        <circle cx="78" cy="108" r="3.2"/><circle cx="200" cy="128" r="3.2"/><circle cx="322" cy="108" r="3.2"/>
+      </g>
+      <path d="M60 128 C140 148, 260 148, 340 128" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1" stroke-dasharray="3 6"/>
+    </svg>
+    <figcaption>Implant &amp; graft · a long, steady heal</figcaption>
+  </figure>
+</header>
+
+<section class="facts wrap" aria-label="Key facts on this path">
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="0"/>
+      </svg>
+      <span class="n">5</span>
+    </div>
+    <div class="lbl">Stages on this path</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="70"/>
+      </svg>
+      <span class="n small">3–6</span>
+    </div>
+    <div class="lbl">Months of healing, typically</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="40"/>
+      </svg>
+      <span class="n">3D</span>
+    </div>
+    <div class="lbl">CBCT scan to plan the site</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="90"/>
+      </svg>
+      <span class="n">2</span>
+    </div>
+    <div class="lbl">Teams: our clinic, then your dentist</div>
+  </div>
+</section>
+
+<nav class="mindmap" id="map" aria-label="Journey map">
+  <svg class="mindmap-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <circle cx="200" cy="200" r="186" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>
+    <path d="M200 200 L119.3 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L280.7 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L381.3 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L345.4 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L200 386" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L54.6 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L18.7 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <circle cx="200" cy="200" r="86" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1" stroke-dasharray="4 4"/>
+  </svg>
+  <div class="hub">
+    <svg class="heart" aria-hidden="true"><use href="#heart"/></svg>
+    <strong>Implant<br>&amp; Graft<br>Journey</strong>
+    <svg class="flourish" aria-hidden="true"><use href="#leaves"/></svg>
+  </div>
+  <ol class="spokes">
+    <li class="s1"><a class="spoke" data-stage="consult" data-lock="stage" href="#consult"><svg aria-hidden="true"><use href="#chat"/></svg> Consult &amp; Scan <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s2"><a class="spoke" data-stage="before" data-lock="stage" href="#before"><svg aria-hidden="true"><use href="#clock"/></svg> Before Surgery <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s3"><a class="spoke" data-stage="surgery" data-lock="stage" href="#surgery"><svg aria-hidden="true"><use href="#cal"/></svg> Surgery Day <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s4"><a class="spoke" data-stage="healing" data-lock="stage" href="#healing"><svg aria-hidden="true"><use href="#leaf"/></svg> Healing <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s5"><a class="spoke" data-stage="restore" data-lock="stage" href="#restore"><svg aria-hidden="true"><use href="#crown"/></svg> Your Dentist <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s6"><a class="spoke" data-stage="faq" href="#faq"><svg aria-hidden="true"><use href="#icon-faq"/></svg> FAQ</a></li>
+    <li class="s7"><a class="spoke" data-stage="contact" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg> Contacts</a></li>
+  </ol>
+</nav>
+<p class="hint hint-open">Tap a segment to jump</p>
+<p class="hint hint-lock">Your care team will unlock the next step.</p>
+
+<section class="path wrap" aria-labelledby="path-title">
+  <h2 id="path-title">The path · scan to restoration</h2>
+  <svg class="path-svg path-vert" viewBox="0 0 320 360" role="img" aria-label="Timeline from consult to restoration">
+    <path d="M40 20 C80 70, 40 110, 90 150 S200 210, 140 260 S60 310, 160 340" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="1.6">
+      <circle cx="40" cy="20" r="3.2" fill="none" stroke="#fff"/><text x="56" y="24">CONSULT + CBCT</text>
+      <circle cx="62" cy="88" r="3.2" fill="none" stroke="#fff"/><text x="78" y="92">BEFORE</text>
+      <circle cx="90" cy="150" r="3.2" fill="none" stroke="#fff"/><text x="106" y="154">SURGERY DAY</text>
+      <circle cx="168" cy="210" r="3.2" fill="none" stroke="#fff"/><text x="184" y="214">HEALING</text>
+      <circle cx="140" cy="260" r="3.2" fill="none" stroke="#fff"/><text x="156" y="264">INTEGRATION</text>
+      <circle cx="158" cy="338" r="3.2" fill="none" stroke="#fff"/><text x="174" y="342">YOUR DENTIST</text>
+    </g>
+  </svg>
+  <svg class="path-svg path-horiz" viewBox="0 0 860 160" role="img" aria-label="Timeline from consult to restoration">
+    <path d="M30 110 C120 110, 150 40, 250 48 S380 150, 500 70 S680 20, 830 90" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.3"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="2">
+      <circle cx="40" cy="108" r="3.4" fill="none" stroke="#fff"/><text x="12" y="132">CONSULT + CBCT</text>
+      <circle cx="190" cy="52" r="3.4" fill="none" stroke="#fff"/><text x="168" y="38">BEFORE</text>
+      <circle cx="340" cy="108" r="3.4" fill="none" stroke="#fff"/><text x="292" y="132">SURGERY DAY</text>
+      <circle cx="500" cy="70" r="3.4" fill="none" stroke="#fff"/><text x="470" y="56">HEALING</text>
+      <circle cx="660" cy="40" r="3.4" fill="none" stroke="#fff"/><text x="608" y="26">INTEGRATION</text>
+      <circle cx="820" cy="88" r="3.4" fill="none" stroke="#fff"/><text x="768" y="112">YOUR DENTIST</text>
+    </g>
+  </svg>
+</section>
+
+<nav class="jump no-print" aria-label="Jump to a stage">
+  <a href="#consult" data-stage="consult" data-lock="stage">Consult</a>
+  <a href="#before" data-stage="before" data-lock="stage">Before</a>
+  <a href="#surgery" data-stage="surgery" data-lock="stage">Surgery</a>
+  <a href="#healing" data-stage="healing" data-lock="stage">Healing</a>
+  <a href="#restore" data-stage="restore" data-lock="stage">Dentist</a>
+  <a href="#urgent" data-stage="urgent">Call</a>
+  <a href="#faq" data-stage="faq">FAQ</a>
+  <a href="#contact" data-stage="contact">Clinic</a>
+</nav>
+
+<main>
+<div class="wrap">
+  <article class="panel" id="consult" data-lock="stage">
+    <p class="lbl">Stage 01</p>
+    <h2>Consult &amp; CBCT</h2>
+    <p class="intro staff-keep">You have met Dr. Kang. A 3D CBCT scan lets us see bone volume, the sinus, and nearby nerves so we can plan an implant, a graft, or both.</p>
+    <p class="intro consult-only">You have met Dr. Kang and had — or will have — a 3D CBCT scan. That scan is how we plan an implant, a graft, or both. Your care team will unlock the next step when it is time.</p>
+
+    <h3>The path at a glance</h3>
+    <ol class="rows">
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Consult and 3D scan</strong><span>We look at bone, gums, and neighbouring teeth. The CBCT is a focused 3D X-ray of the jaws.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>A plan that may include a graft</strong><span>If bone is thin or a sinus sits low, a graft can create a steadier bed for the implant — sometimes the same day, sometimes as its own step.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Surgery day</strong><span>The implant is a small titanium post in the bone. A graft, if you need one, is placed to support that bone.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Quiet months of healing</strong><span>Bone typically grows onto the implant over about 3–6 months before the final tooth is made.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Hand-off to your dentist</strong><span>We do the surgery. Your restoring dentist (or prosthodontist) makes the abutment and crown.</span></div></li>
+      <li class="consult-only"><span class="dot" aria-hidden="true"></span><div><strong>Two teams, one tooth</strong><span>Our clinic places the implant and graft. Your dentist restores it when healing is ready.</span></div></li>
+    </ol>
+
+    <h3>Why a CBCT scan</h3>
+    <p>A regular X-ray is flat. A CBCT shows height, width, and the space around the site — including the sinus in the upper jaw and the nerve canal in the lower jaw. That is how we choose length, angle, and whether a graft is wise.</p>
+    <div class="grid two">
+      <div class="cell"><p class="num">Implant</p><p class="lbl">A post that bone can grow onto</p></div>
+      <div class="cell"><p class="num">Graft</p><p class="lbl">Material that helps your own bone fill in</p></div>
+    </div>
+    <p>Fees and a written estimate are reviewed at the consult. Amounts are not listed on this page. Ask us if you need the estimate again: <span class="placeholder">[Clinic phone]</span>.</p>
+  </article>
+
+  <article class="panel" id="before" data-lock="stage">
+    <p class="lbl">Stage 02</p>
+    <h2>Before Surgery</h2>
+    <p class="intro">Treat this like any oral-surgery morning. A little setup at home makes the first evening easier.</p>
+    <h3>If you are being sedated</h3>
+    <ul>
+      <li>Follow the fasting instructions we give you. A common pattern is nothing to eat after midnight, with clear fluids only up to the time we specify.</li>
+      <li>A responsible adult must take you home. You cannot drive after sedation.</li>
+      <li>Take only the medicines we have said you should take.</li>
+    </ul>
+    <div class="callout" role="note"><strong>Local anaesthetic only?</strong> A light meal is usually fine, and you may not need a ride. We will tell you which path is yours.</div>
+    <h3>Prescriptions and what to wear</h3>
+    <ul class="ready">
+      <li>Fill prescriptions before the day so they are at home</li>
+      <li>Loose, comfortable clothes; short sleeves if an IV is possible</li>
+      <li>No makeup, jewelry, or contact lenses if you are sedated</li>
+      <li>Health card, photo ID, and your medicine list</li>
+    </ul>
+    <h3>At home, set out</h3>
+    <ul>
+      <li>Ice packs, extra pillows, and soft foods</li>
+      <li>Gauze as we provided</li>
+      <li>If you had a sinus-lift plan: tissues for gentle sniffing — you will not be blowing your nose</li>
+    </ul>
+  </article>
+
+  <article class="panel" id="surgery" data-lock="stage">
+    <p class="lbl">Stage 03</p>
+    <h2>Surgery Day</h2>
+    <p class="intro">This visit is for the implant, the graft, or both. You typically go home the same day.</p>
+    <ol class="jobs">
+      <li><span class="when">Arrive</span><div><h3>Check in</h3><p>Confirm your escort if you are sedated. Tell us if your health or medicines have changed.</p></div></li>
+      <li><span class="when">Visit</span><div><h3>Implant and/or graft</h3><p>The gum is numbed. An implant is placed into bone. If a graft is part of the plan, we add material and often a thin membrane to hold it while your own bone grows.</p></div></li>
+      <li><span class="when">After</span><div><h3>Protect the site</h3><p>Bite on gauze as we show you. Do not poke the area with your tongue or a finger. Small granules or a bit of membrane at the edge can appear later — do not pull at them.</p></div></li>
+      <li><span class="when">Home</span><div><h3>Rest, ice, medicines</h3><p>Start ice on the cheek. Take medicines as written. Soft food on the other side of the mouth.</p></div></li>
+    </ol>
+    <h3>If you had a sinus lift</h3>
+    <p>A sinus lift adds bone under the sinus in the upper back jaw. For the time we specify — often about two weeks, sometimes longer — <strong>do not blow your nose</strong>. Sneeze with your mouth open. Avoid straws. If you use a CPAP mask, ask us before wearing it over the surgical side.</p>
+    <div class="callout" role="note"><strong>Particles or membrane:</strong> a few grains of graft material on the tongue, or a visible edge of membrane, can happen. Do not pick. Call us if a large piece comes free, if the site opens, or if you are unsure.</div>
+  </article>
+
+  <article class="panel" id="healing" data-lock="stage">
+    <p class="lbl">Stage 04</p>
+    <h2>Healing &amp; Integration</h2>
+    <p class="intro">Bone needs quiet time to grow onto the implant. This stretch is measured in months, not days. It is supposed to feel uneventful.</p>
+    <div class="grid two">
+      <div class="cell">
+        <h3 class="flush">The first days</h3>
+        <ul>
+          <li>Swelling often peaks around days 1–3.</li>
+          <li>Ice, head up, soft food, no straws.</li>
+          <li>Keep fingers, toothpicks, and water-flossers away from the site until we say otherwise.</li>
+          <li>If you had a sinus lift: still no nose blowing.</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <h3 class="flush">The weeks after</h3>
+        <ul>
+          <li>Gentle salt-water rinses after 24 hours if we asked you to.</li>
+          <li>Brush neighbouring teeth carefully.</li>
+          <li>A healing cap or stitches may be present. Leave them unless we remove them.</li>
+          <li>Come to the follow-ups we booked — often a short check, then a later visit to test healing.</li>
+        </ul>
+      </div>
+    </div>
+    <h3>Typical timing</h3>
+    <ol class="tl">
+      <li><span class="when">Weeks</span><strong>Soft-tissue comfort</strong> Gums usually feel much better within a couple of weeks.</li>
+      <li><span class="when">3–6 months</span><strong>Osseointegration</strong> Bone grows onto the implant. Grafts sometimes need the longer end of this range.</li>
+      <li><span class="when">Ready</span><strong>We let your dentist know</strong> When the implant is stable, we hand the next step to your restoring dentist.</li>
+    </ol>
+    <p>A temporary tooth — a flipper, an Essex retainer, or a temporary crown — is arranged with your dentist if you need something in the smile while you wait. Do not chew hard foods on a temporary over a healing implant unless your dentist has said it is designed for that.</p>
+  </article>
+
+  <article class="panel" id="restore" data-lock="stage">
+    <p class="lbl">Stage 05</p>
+    <h2>Your Restoring Dentist</h2>
+    <p class="intro">Our part is the surgery and the heal. The tooth you see and chew with is made by your general dentist or prosthodontist.</p>
+    <ol class="rows">
+      <li><span class="dot" aria-hidden="true"></span><div><strong>We confirm the implant is ready</strong><span>A visit and, when needed, an X-ray. Then we send records to your dentist.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Abutment</strong><span>A small connector is placed on the implant. This may happen in our clinic or in theirs — we will say which.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Crown, bridge, or denture</strong><span>Your dentist takes impressions or a scan and makes the final tooth or teeth.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Long-term care</strong><span>Clean around the implant as your dentist shows you. Keep both our clinic and your dentist in the loop if something feels different.</span></div></li>
+    </ol>
+    <div class="callout" role="note"><strong>Who to call:</strong> questions about the crown, bite, or temporary tooth go to your restoring dentist. Questions about the implant, graft, sinus, or surgical site still come to us at <span class="placeholder">[Clinic phone]</span>.</div>
+  </article>
+
+  <div class="lower">
+  <article class="panel" id="urgent">
+    <p class="lbl">Urgent</p>
+    <h2>When to Call Us</h2>
+    <p class="intro">Call us, or go to emergency, if any of the following happen. You are not bothering us.</p>
+    <div class="alert" role="alert">
+      <strong>Call us or go to emergency if you have:</strong>
+      <ul>
+        <li>Heavy bleeding that will not stop with firm gauze pressure for 20 minutes</li>
+        <li>Fever</li>
+        <li>Trouble swallowing or breathing</li>
+        <li>Swelling that gets worse after day 3</li>
+        <li>Numbness of the lip, chin, or tongue that has not resolved as discussed at your visit</li>
+      </ul>
+    </div>
+    <p>Also call us (non-emergency) if graft particles keep coming out in quantity, if a membrane feels loose, or if you cannot keep from blowing your nose after a sinus lift.</p>
+    <p>Clinic hours: Monday–Friday, 8 AM–4 PM · <span class="placeholder">[Clinic phone]</span></p>
+    <p>After hours: <span class="placeholder">[After-hours line]</span>. If you cannot reach us and you are having trouble breathing or bleeding heavily, go to the nearest emergency department.</p>
+  </article>
+
+  <article class="panel" id="faq">
+    <p class="lbl">Help</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Why are implants and grafts on the same page?</summary><div class="ans">Recovery is similar: protect the site, keep it clean, and give bone time. A graft may be done with the implant or as its own visit. Your plan will say which.</div></details>
+    <details class="faq"><summary>How long until I have a tooth?</summary><div class="ans">Soft tissue settles in weeks. The implant typically needs about 3–6 months in bone before the final crown. Your dentist makes that tooth after we confirm healing.</div></details>
+    <details class="faq"><summary>What is a sinus lift?</summary><div class="ans">In the upper back jaw, a thin sinus can sit where bone is needed. A sinus lift gently adds room for graft material. Do not blow your nose while it heals, and sneeze with your mouth open.</div></details>
+    <details class="faq consult-later"><summary>Something small came out of the site. Is that expected?</summary><div class="ans">A few graft granules, or an edge of membrane, can show. Do not pick. Call us if a large piece comes free or if you are unsure.</div></details>
+    <details class="faq consult-later"><summary>Who makes the crown?</summary><div class="ans">Your restoring dentist or prosthodontist. We place the implant and graft; they restore the tooth you chew with.</div></details>
+    <details class="faq"><summary>Who do I call if I am worried?</summary><div class="ans">The clinic at <span class="placeholder">[Clinic phone]</span> during hours. After hours, use <span class="placeholder">[After-hours line]</span>. For heavy bleeding, trouble breathing, or trouble swallowing, go to emergency if you cannot reach us.</div></details>
+  </article>
+
+  <article class="panel" id="contact">
+    <p class="lbl">Clinic</p>
+    <h2>Contacts</h2>
+    <p class="intro">Questions are welcome. Patients are welcome to text once <span class="placeholder">[Clinic phone]</span> is confirmed.</p>
+    <p>
+      <strong>Langley Oral &amp; Maxillofacial Surgery</strong><br>
+      #110-8661 201 Street, Langley, BC<br>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=110-8661+201+Street+Langley+BC">Open in Maps</a>
+    </p>
+    <p>Call or text: <span class="placeholder">[Clinic phone]</span><br>
+       Email: <span class="placeholder">[Clinic email]</span><br>
+       After hours: <span class="placeholder">[After-hours line]</span></p>
+    <p>Hours: Monday–Friday, 8 AM–4 PM</p>
+  </article>
+  </div>
+</div>
+
+  <div class="horizon">
+    <div class="sun" aria-hidden="true"></div>
+    <p class="quote">Bone heals in quiet months. That wait is the work.</p>
+    <p class="related">Other journeys:
+      <a href="../wisdom-teeth/">Wisdom teeth</a>
+      · <a href="../lesions/">Biopsy &amp; lesions</a>
+      · <a href="../jaw-surgery-journey/">Jaw surgery</a>
+      · <a href="../journeys/">All journeys</a>
+    </p>
+    <footer class="legal wrap">
+      <p>General information only. Always follow Dr. Kang’s specific instructions for you.</p>
+    </footer>
+  </div>
+</main>
+<script src="../shared/journey.js"></script>
+</body>
+</html>
