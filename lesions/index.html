@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#5E6E7C">
+<meta name="description" content="Your biopsy and lesion-removal journey with Langley Oral &amp; Maxillofacial Surgery — a calm path from consult to results.">
+<title>Your Biopsy &amp; Lesion Removal Journey | Langley Oral &amp; Maxillofacial Surgery</title>
+<link rel="preload" href="../shared/fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../shared/fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../shared/journey.css">
+<script>
+(function () {
+  "use strict";
+  var map = {
+    "after-consult": "consult", consult: "consult",
+    procedure: "procedure", surgery: "procedure", "procedure-day": "procedure", biopsy: "procedure",
+    recovery: "recovery",
+    results: "results", pathology: "results", followup: "results", "follow-up": "results"
+  };
+  var stage = "";
+  try {
+    (location.search || "").replace(/^\?/, "").split("&").forEach(function (p) {
+      var kv = p.split("=");
+      if (decodeURIComponent(kv[0] || "") === "stage") {
+        stage = decodeURIComponent((kv[1] || "").replace(/\+/g, " ")).toLowerCase();
+      }
+    });
+  } catch (e) {}
+  if (map[stage]) {
+    document.documentElement.className += (document.documentElement.className ? " " : "") + "stage-lock";
+    document.documentElement.setAttribute("data-open-stage", map[stage]);
+  }
+})();
+</script>
+</head>
+<body>
+<a class="skip" href="#consult">Skip to journey stages</a>
+
+<svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="heart" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 17.6C6.8 13.8 3.5 10.7 3.5 7.4 3.5 5.2 5.1 3.6 7.3 3.6c1.3 0 2.5.6 3.2 1.6.7-1 1.9-1.6 3.2-1.6 2.2 0 3.8 1.6 3.8 3.8 0 3.3-3.3 6.4-8 10.2z"/></symbol>
+  <symbol id="leaves" viewBox="0 0 80 16" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 8h64"/><path d="M24 8c-2-4-8-6-14-6 2 4 8 6 14 6z"/><path d="M56 8c2-4 8-6 14-6-2 4-8 6-14 6z"/></symbol>
+  <symbol id="chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M5 7h14v8H9l-4 3V7z"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="12" cy="12" r="7.5"/><path d="M12 8v4l3 2"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="4.5" y="5.5" width="15" height="14" rx="1"/><path d="M8 3.5v4M16 3.5v4M4.5 10h15"/></symbol>
+  <symbol id="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M6 18c7-1 12-8 13-14-6 1-13 6-13 14z"/><path d="M8 14c2-1 5-4 7-8"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M8 4h3l1 4-2 1a10 10 0 0 0 5.5 5.5l1-2 4 1v3A16 16 0 0 1 7 6.2 2 2 0 0 1 8 4z"/></symbol>
+  <symbol id="icon-faq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="7.5"/><path d="M9.6 10a2.4 2.4 0 1 1 4 1.6c-.7.7-1.6 1.1-1.6 2.2"/><path d="M12 16.6h.01"/></symbol>
+  <symbol id="alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M12 4.5 3.8 19h16.4L12 4.5z"/><path d="M12 10v4.5"/><path d="M12 17.2h.01"/></symbol>
+  <symbol id="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="6" y="11" width="12" height="9" rx="1"/><path d="M8.5 11V8.2a3.5 3.5 0 0 1 7 0V11"/></symbol>
+</svg>
+
+<header class="hero wrap">
+  <p class="kicker">Langley Oral &amp; Maxillofacial Surgery · Dr. Ben Kang</p>
+  <h1 class="tight"><span>Biopsy</span><span>&amp; Lesion</span></h1>
+  <p class="yearish">Journey</p>
+  <p class="lede">A calm, short path: consult, a precise visit, gentle healing, and a phone call when the laboratory report is ready. Tap the stage that matches where you are today.</p>
+  <p class="print-url">https://josenni-rgb.github.io/lesions/</p>
+  <figure class="hero-art">
+    <svg viewBox="0 0 400 160" role="img" aria-label="White line drawing of a leaf and a dotted waiting path">
+      <path d="M40 118 C120 98, 260 138, 360 108" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2" stroke-dasharray="3 6"/>
+      <g fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M200 36c28 8 52 32 52 58 0 22-18 38-52 48-34-10-52-26-52-48 0-26 24-50 52-58z"/>
+        <path d="M200 44v90"/>
+        <path d="M200 70c18 6 28 16 34 28"/>
+        <path d="M200 88c-16 6-26 14-32 24"/>
+        <circle cx="40" cy="118" r="3.2"/><circle cx="200" cy="128" r="3.2"/><circle cx="360" cy="108" r="3.2"/>
+      </g>
+    </svg>
+    <figcaption>Biopsy · a small visit, then we wait together</figcaption>
+  </figure>
+</header>
+
+<section class="facts wrap" aria-label="Key facts on this path">
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="0"/>
+      </svg>
+      <span class="n">4</span>
+    </div>
+    <div class="lbl">Stages on this path</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="60"/>
+      </svg>
+      <span class="n small">1–3</span>
+    </div>
+    <div class="lbl">Weeks for typical lab results</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="40"/>
+      </svg>
+      <span class="n">In</span>
+    </div>
+    <div class="lbl">Usually done here in the clinic</div>
+  </div>
+  <div class="fact">
+    <div class="donut" aria-hidden="true">
+      <svg viewBox="0 0 84 84">
+        <circle cx="42" cy="42" r="34" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.4"/>
+        <circle cx="42" cy="42" r="34" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="214" stroke-dashoffset="90"/>
+      </svg>
+      <span class="n">Call</span>
+    </div>
+    <div class="lbl">We phone you with results</div>
+  </div>
+</section>
+
+<nav class="mindmap" id="map" aria-label="Journey map">
+  <svg class="mindmap-svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <circle cx="200" cy="200" r="186" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.2"/>
+    <path d="M200 200 L119.3 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L280.7 32.4" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L381.3 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L345.4 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L200 386" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L54.6 316" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <path d="M200 200 L18.7 158.6" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+    <circle cx="200" cy="200" r="86" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="1" stroke-dasharray="4 4"/>
+  </svg>
+  <div class="hub">
+    <svg class="heart" aria-hidden="true"><use href="#heart"/></svg>
+    <strong>Biopsy<br>&amp; Lesion<br>Journey</strong>
+    <svg class="flourish" aria-hidden="true"><use href="#leaves"/></svg>
+  </div>
+  <ol class="spokes">
+    <li class="s1"><a class="spoke" data-stage="consult" data-lock="stage" href="#consult"><svg aria-hidden="true"><use href="#chat"/></svg> After Consult <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s2"><a class="spoke" data-stage="procedure" data-lock="stage" href="#procedure"><svg aria-hidden="true"><use href="#cal"/></svg> Procedure Day <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s3"><a class="spoke" data-stage="recovery" data-lock="stage" href="#recovery"><svg aria-hidden="true"><use href="#leaf"/></svg> Recovery <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s4"><a class="spoke" data-stage="results" data-lock="stage" href="#results"><svg aria-hidden="true"><use href="#clock"/></svg> Results <svg class="lock" aria-hidden="true"><use href="#lock"/></svg></a></li>
+    <li class="s5"><a class="spoke" data-stage="urgent" href="#urgent"><svg aria-hidden="true"><use href="#alert"/></svg> When to Call</a></li>
+    <li class="s6"><a class="spoke" data-stage="faq" href="#faq"><svg aria-hidden="true"><use href="#icon-faq"/></svg> FAQ</a></li>
+    <li class="s7"><a class="spoke" data-stage="contact" href="#contact"><svg aria-hidden="true"><use href="#phone"/></svg> Contacts</a></li>
+  </ol>
+</nav>
+<p class="hint hint-open">Tap a segment to jump</p>
+<p class="hint hint-lock">Your care team will unlock the next step.</p>
+
+<section class="path wrap" aria-labelledby="path-title">
+  <h2 id="path-title">The path · consult to results</h2>
+  <svg class="path-svg path-vert" viewBox="0 0 320 300" role="img" aria-label="Timeline from consult to results">
+    <path d="M40 20 C80 70, 50 120, 110 160 S210 210, 150 250 S80 270, 160 286" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="1.6">
+      <circle cx="40" cy="20" r="3.2" fill="none" stroke="#fff"/><text x="56" y="24">CONSULT</text>
+      <circle cx="58" cy="92" r="3.2" fill="none" stroke="#fff"/><text x="74" y="96">PROCEDURE DAY</text>
+      <circle cx="118" cy="168" r="3.2" fill="none" stroke="#fff"/><text x="134" y="172">RECOVERY</text>
+      <circle cx="154" cy="284" r="3.2" fill="none" stroke="#fff"/><text x="170" y="288">RESULTS · 1–3 WEEKS</text>
+    </g>
+  </svg>
+  <svg class="path-svg path-horiz" viewBox="0 0 860 160" role="img" aria-label="Timeline from consult to results">
+    <path d="M30 110 C160 110, 200 40, 320 52 S480 150, 560 80 S700 30, 830 90" fill="none" stroke="rgba(255,255,255,.9)" stroke-width="1.3"/>
+    <g fill="#fff" font-family="Josefin Sans, sans-serif" font-size="11" letter-spacing="2">
+      <circle cx="40" cy="108" r="3.4" fill="none" stroke="#fff"/><text x="28" y="132">CONSULT</text>
+      <circle cx="250" cy="50" r="3.4" fill="none" stroke="#fff"/><text x="196" y="36">PROCEDURE DAY</text>
+      <circle cx="560" cy="80" r="3.4" fill="none" stroke="#fff"/><text x="528" y="64">RECOVERY</text>
+      <circle cx="820" cy="88" r="3.4" fill="none" stroke="#fff"/><text x="748" y="112">RESULTS · 1–3 WKS</text>
+    </g>
+  </svg>
+</section>
+
+<nav class="jump no-print" aria-label="Jump to a stage">
+  <a href="#consult" data-stage="consult" data-lock="stage">Consult</a>
+  <a href="#procedure" data-stage="procedure" data-lock="stage">Procedure</a>
+  <a href="#recovery" data-stage="recovery" data-lock="stage">Recovery</a>
+  <a href="#results" data-stage="results" data-lock="stage">Results</a>
+  <a href="#urgent" data-stage="urgent">Call</a>
+  <a href="#faq" data-stage="faq">FAQ</a>
+  <a href="#contact" data-stage="contact">Clinic</a>
+</nav>
+
+<main>
+<div class="wrap">
+  <article class="panel" id="consult" data-lock="stage">
+    <p class="lbl">Stage 01</p>
+    <h2>After Your Consult</h2>
+    <p class="intro staff-keep">You have met Dr. Kang about an area in the mouth that needs a closer look. A biopsy or removal lets us study a small sample of tissue so we know exactly how to care for you.</p>
+    <p class="intro consult-only">You have met Dr. Kang about an area in the mouth that needs a closer look. A biopsy is a small, planned visit. Your care team will unlock the next step when a date is set.</p>
+
+    <h3>The path at a glance</h3>
+    <ol class="rows">
+      <li><span class="dot" aria-hidden="true"></span><div><strong>A look and a plan</strong><span>We examine the area, talk about whether a small sample or a full removal is recommended, and answer your questions.</span></div></li>
+      <li><span class="dot" aria-hidden="true"></span><div><strong>Why this visit helps</strong><span>Looking at tissue under a microscope is how we know what the area is. It is a routine part of careful care.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Procedure day</strong><span>Usually in the clinic with local anaesthetic. You go home the same day.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>A few quiet days</strong><span>Mild soreness is common. Soft food and gentle rinsing are usually enough.</span></div></li>
+      <li class="consult-later"><span class="dot" aria-hidden="true"></span><div><strong>Results by phone</strong><span>Reports typically take 1–3 weeks. We call you to review them and talk about any next step.</span></div></li>
+      <li class="consult-only"><span class="dot" aria-hidden="true"></span><div><strong>We will be in touch</strong><span>When the visit is booked, you will get a link for the day of the procedure. Afterward, we call when the report is in.</span></div></li>
+    </ol>
+    <p>Waiting can feel long. That wait is normal. You do not need to search the internet for the area we discussed — bring questions to us instead.</p>
+  </article>
+
+  <article class="panel" id="procedure" data-lock="stage">
+    <p class="lbl">Stage 02</p>
+    <h2>Procedure Day</h2>
+    <p class="intro">This is usually a short visit in the clinic. You will be numb in the area. Most people go home soon after and continue their day at an easy pace.</p>
+    <ol class="jobs">
+      <li><span class="when">Before</span><div><h3>Eat and arrive as usual</h3><p>If you are having local anaesthetic only, a normal meal is fine. Fast and arrange a ride only if we have planned sedation — we will have said so clearly.</p></div></li>
+      <li><span class="when">Visit</span><div><h3>Numb, then a small sample or removal</h3><p>We numb the site. A small piece of tissue is taken, or the whole area is removed if that was the plan. Stitches are used when they will help the site rest.</p></div></li>
+      <li><span class="when">After</span><div><h3>Bite on gauze, then home</h3><p>Gentle pressure helps. A little oozing is expected. The sample goes to the laboratory; you do not wait at the clinic for the report.</p></div></li>
+    </ol>
+    <div class="callout" role="note"><strong>The report is not ready today.</strong> That is expected. We call you when it is, typically in 1–3 weeks.</div>
+  </article>
+
+  <article class="panel" id="recovery" data-lock="stage">
+    <p class="lbl">Stage 03</p>
+    <h2>Recovery</h2>
+    <p class="intro">Most people describe this as sore, not severe. Follow the printed aftercare we give you if it differs from this page.</p>
+    <div class="grid two">
+      <div class="cell">
+        <h3 class="flush">The first days</h3>
+        <ul>
+          <li>Mild swelling or bruising can appear and then fade.</li>
+          <li>Soft, lukewarm food. Chew away from the site.</li>
+          <li>Steady gauze pressure if you see more than light pink saliva.</li>
+          <li>No straws, smoking, or vaping while the site is tender — often several days.</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <h3 class="flush">Keeping it comfortable</h3>
+        <ul>
+          <li>After 24 hours, gentle salt-water rinses if we asked you to.</li>
+          <li>Brush neighbouring teeth carefully. Skip the site at first.</li>
+          <li>Stitches often dissolve. Do not pull at them.</li>
+          <li>Over-the-counter pain relief as we discussed, following the label.</li>
+        </ul>
+      </div>
+    </div>
+    <p>A small white or yellow patch on the site as it heals can be a normal covering. Call us if the area opens, if bleeding will not slow, or if soreness is growing after the third day.</p>
+  </article>
+
+  <article class="panel" id="results" data-lock="stage">
+    <p class="lbl">Stage 04</p>
+    <h2>Results &amp; Follow-up</h2>
+    <p class="intro">The laboratory studies the tissue and sends a report to our clinic. We call you to go through it in plain language.</p>
+    <ol class="tl">
+      <li><span class="when">1–3 weeks</span><strong>Typical wait</strong> Some reports come sooner. A few take a little longer if extra stains are needed. That extra time is about being thorough.</li>
+      <li><span class="when">We call</span><strong>A conversation, not a portal surprise</strong> We review what the report says and whether any follow-up visit is useful.</li>
+      <li><span class="when">Next</span><strong>If anything more is needed</strong> We will book it with you. Many people need only the healing they are already doing.</li>
+    </ol>
+    <div class="callout" role="note"><strong>If you have not heard by the end of the third week,</strong> please call us at <a href="tel:+16043710578">604-371-0578</a>. Reports can sit in a queue, and we would rather you check in than wait and wonder.</div>
+    <p>Keep the number we have on file up to date so the call reaches you. If you prefer a specific person with you on the line, tell us when we book the procedure.</p>
+  </article>
+
+  <div class="lower">
+  <article class="panel" id="urgent">
+    <p class="lbl">Urgent</p>
+    <h2>When to Call Us</h2>
+    <p class="intro">Call us, or go to emergency, if any of the following happen. You are not bothering us.</p>
+    <div class="alert" role="alert">
+      <strong>Call us or go to emergency if you have:</strong>
+      <ul>
+        <li>Heavy bleeding that will not stop with firm gauze pressure for 20 minutes</li>
+        <li>Fever</li>
+        <li>Trouble swallowing or breathing</li>
+        <li>Swelling that gets worse after day 3</li>
+        <li>Numbness of the lip, chin, or tongue that has not resolved as discussed at your visit</li>
+      </ul>
+    </div>
+    <p>Call or text <a href="tel:+16043710578">604-371-0578</a> any time — during clinic hours (Monday–Friday, 8 AM–4 PM) or after hours (follow the recorded instructions). If you cannot reach us and you are having trouble breathing or bleeding heavily, go to the nearest emergency department.</p>
+  </article>
+
+  <article class="panel" id="faq">
+    <p class="lbl">Help</p>
+    <h2>FAQ</h2>
+    <details class="faq"><summary>Why is a biopsy recommended?</summary><div class="ans">It lets a laboratory look at a small sample of tissue so we know exactly what the area is and how to care for you. It is a common, careful next step — not a conclusion.</div></details>
+    <details class="faq"><summary>Will the visit hurt?</summary><div class="ans">The site is numbed first. You may feel pressure. Afterward, most people describe mild soreness for a few days, eased with the aftercare we give you.</div></details>
+    <details class="faq"><summary>How long do results take?</summary><div class="ans">Typically 1–3 weeks. We call you to review the report. If you have not heard by the end of the third week, please call us.</div></details>
+    <details class="faq consult-later"><summary>Can I go to work the same day?</summary><div class="ans">Many people do, at an easy pace, after a local-anaesthetic visit. If the site is in a spot that makes talking or eating tender, give yourself a quieter afternoon.</div></details>
+    <details class="faq consult-later"><summary>Will I have stitches?</summary><div class="ans">Often yes, so the site can rest. They usually dissolve. We will tell you if they need a short return visit.</div></details>
+    <details class="faq"><summary>Who do I call if I am worried?</summary><div class="ans">The clinic at <a href="tel:+16043710578">604-371-0578</a> — you are welcome to text. After hours, call the same number and follow the recorded instructions. For heavy bleeding, trouble breathing, or trouble swallowing, go to emergency if you cannot reach us.</div></details>
+  </article>
+
+  <article class="panel" id="contact">
+    <p class="lbl">Clinic</p>
+    <h2>Contacts</h2>
+    <p class="intro">Questions are welcome. Patients are welcome to text.</p>
+    <p>
+      <strong>Langley Oral &amp; Maxillofacial Surgery</strong><br>
+      #110-8661 201 Street, Langley, BC<br>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=110-8661+201+Street+Langley+BC">Open in Maps</a>
+    </p>
+    <div class="btns">
+      <a class="btn" href="sms:+16043710578">Text 604-371-0578</a>
+      <a class="btn" href="tel:+16043710578">Call 604-371-0578</a>
+      <a class="btn" href="mailto:langleyoms@gmail.com">Email langleyoms@gmail.com</a>
+    </div>
+    <p>Hours: Monday–Friday, 8 AM–4 PM. After hours, call the clinic at <a href="tel:+16043710578">604-371-0578</a> and follow the recorded instructions.</p>
+  </article>
+  </div>
+</div>
+
+  <div class="horizon">
+    <div class="sun" aria-hidden="true"></div>
+    <p class="quote">A small visit. Then we wait together.</p>
+    <p class="related">Other journeys:
+      <a href="../wisdom-teeth/">Wisdom teeth</a>
+      · <a href="../implants/">Implants &amp; grafts</a>
+      · <a href="../jaw-surgery-journey/">Jaw surgery</a>
+      · <a href="../journeys/">All journeys</a>
+    </p>
+    <footer class="legal wrap">
+      <p>General information only. Always follow Dr. Kang’s specific instructions for you.</p>
+    </footer>
+  </div>
+</main>
+<script src="../shared/journey.js"></script>
+</body>
+</html>
