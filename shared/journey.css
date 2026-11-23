@@ -436,13 +436,6 @@ details.faq summary::after{content:"+";color:#fff}
 details.faq[open] summary::after{content:"–"}
 details.faq .ans{padding:0 0 12px;color:var(--ink-dim)}
 
-.placeholder{
-  display:inline;
-  border-bottom:1px dashed var(--sun);
-  color:var(--sun-core);
-  font-weight:600;
-  letter-spacing:.04em;
-}
 code{font-size:.88em;letter-spacing:.03em}
 
 .horizon{
