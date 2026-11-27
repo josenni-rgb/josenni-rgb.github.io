@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#5E6E7C">
+<meta name="description" content="Staff tool to make a personal jaw-surgery fluid tracker link. Nothing is saved or sent.">
+<title>Make a fluid tracker link | Langley Oral &amp; Maxillofacial Surgery</title>
+<link rel="preload" href="../../../shared/fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../../shared/fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../shared/journey.css">
+<link rel="stylesheet" href="../fluids.css">
+</head>
+<body>
+<a class="skip" href="#make-link">Skip to make-link form</a>
+
+<header class="hero wrap">
+  <p class="kicker">Langley Oral &amp; Maxillofacial Surgery · Staff</p>
+  <h1 class="tight"><span>Make a</span><span>fluid link</span></h1>
+  <p class="yearish">Text the patient</p>
+  <p class="lede">Build a personal tracker link. The patient never types their name. Nothing from this page is saved or sent.</p>
+</header>
+
+<main>
+<div class="wrap">
+  <article class="panel fluid-page-panel" id="make-link" data-fluid-make-link>
+    <section class="fluid-maker" aria-label="Make a personal fluid tracker link">
+      <p class="fluid-who-ask">Patient link</p>
+      <p class="fluid-who-help">First name, last initial, and optional chart #. Do not enter a full last name, PHN, email, or phone.</p>
+      <label class="fluid-field">
+        <span>First name</span>
+        <input data-link-first type="text" maxlength="30" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Sarah">
+      </label>
+      <label class="fluid-field">
+        <span>Last initial</span>
+        <input data-link-initial type="text" maxlength="2" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="K" inputmode="text">
+      </label>
+      <label class="fluid-field">
+        <span>Chart # (optional)</span>
+        <input data-link-chart type="text" maxlength="9" autocomplete="off" inputmode="numeric" placeholder="1234">
+      </label>
+      <p class="fluid-who-error" data-link-error hidden></p>
+      <div class="fluid-link-out" data-link-out hidden>
+        <label class="fluid-field">
+          <span>Link</span>
+          <input data-link-url type="text" readonly>
+        </label>
+        <button type="button" class="fluid-copy-lg" data-link-copy>Copy link</button>
+        <label class="fluid-field">
+          <span>Text message</span>
+          <textarea data-link-message readonly rows="7"></textarea>
+        </label>
+        <button type="button" class="fluid-send" data-link-copy-message>Copy message</button>
+      </div>
+      <p class="fluid-privacy">Nothing is saved or sent from this tool. Copy the link or message, then text it from the clinic phone.</p>
+    </section>
+  </article>
+</div>
+  <div class="horizon">
+    <div class="sun" aria-hidden="true"></div>
+    <p class="quote">One tap per syringe, fifteen an hour.</p>
+    <footer class="legal wrap">
+      <p>Staff only. Patients should open the personal tracker link, not this page.</p>
+    </footer>
+  </div>
+</main>
+<script src="../patient-link.js"></script>
+</body>
+</html>

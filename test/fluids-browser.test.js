@@ -217,6 +217,45 @@ function ticksWith(n) {
     });
   });
 
+  await check("personal ?p= link prefills the name and skips the prompt", async function () {
+    var context = await browser.createBrowserContext();
+    var personal = await context.newPage();
+    await personal.setViewport({ width: 390, height: 844, isMobile: true, deviceScaleFactor: 2 });
+    await personal.goto(site.origin + "/jaw-surgery-journey/fluids/?p=Sarah-K-1234", { waitUntil: "networkidle0" });
+    var askVisible = await personal.$eval("[data-fluid-who-card]", function (el) { return !el.hidden; });
+    var whoVisible = await personal.$eval("[data-fluid-who]", function (el) { return !el.hidden; });
+    var label = await personal.$eval("[data-fluid-who-label]", function (el) { return el.textContent; });
+    var stored = await personal.evaluate(function () {
+      return window.__fluidsApi.getPatient().label;
+    });
+    assert.strictEqual(askVisible, false);
+    assert.strictEqual(whoVisible, true);
+    assert.ok(/Sarah K\.\s*#1234/.test(label), label);
+    assert.strictEqual(stored, "Sarah K. #1234");
+    await context.close();
+  });
+
+  await check("make-link page builds a copyable personal URL and text", async function () {
+    var context = await browser.createBrowserContext();
+    var maker = await context.newPage();
+    await maker.setViewport({ width: 390, height: 844, isMobile: true, deviceScaleFactor: 2 });
+    await maker.goto(site.origin + "/jaw-surgery-journey/fluids/make-link/", { waitUntil: "networkidle0" });
+    await maker.evaluate(function () {
+      document.querySelector("[data-link-first]").value = "Sarah";
+      document.querySelector("[data-link-initial]").value = "K";
+      document.querySelector("[data-link-chart]").value = "1234";
+      document.querySelector("[data-link-first]").dispatchEvent(new Event("input", { bubbles: true }));
+    });
+    var outHidden = await maker.$eval("[data-link-out]", function (el) { return el.hidden; });
+    var url = await maker.$eval("[data-link-url]", function (el) { return el.value; });
+    var msg = await maker.$eval("[data-link-message]", function (el) { return el.value; });
+    assert.strictEqual(outHidden, false);
+    assert.strictEqual(url, "https://josenni-rgb.github.io/jaw-surgery-journey/fluids/?p=Sarah-K-1234");
+    assert.ok(msg.indexOf("Hi Sarah,") === 0, msg);
+    assert.ok(msg.indexOf(url) !== -1, msg);
+    await context.close();
+  });
+
   await check("recovery stage page also has the name prompt and send button", async function () {
     var context = await browser.createBrowserContext();
     var recovery = await context.newPage();
