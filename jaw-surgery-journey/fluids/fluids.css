@@ -1,0 +1,80 @@
+/* Hourly fluid tracker — jaw surgery recovery */
+.fluid-tracker{margin:8px 0 4px}
+.fluid-tracker .fluid-title,
+.panel h3.fluid-title{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:300;
+  margin:10px 0 8px;color:#fff;border-top:0;padding-top:12px;
+}
+.fluid-tracker .fluid-lead{
+  font-family:var(--font-poiret);font-size:1.35rem;letter-spacing:.06em;
+  text-align:center;margin:4px 0 14px;color:#fff;
+}
+.fluid-meta{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;
+  margin:0 0 12px;
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:300;
+  color:var(--ink-dim);
+}
+.fluid-meta [data-fluid-count]{color:#fff}
+.fluid-meta span{min-height:28px;display:inline-flex;align-items:center}
+.fluid-grid{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:8px;
+}
+.fluid-syringe{
+  appearance:none;-webkit-appearance:none;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  min-height:68px;padding:10px 4px;
+  margin:0;font:inherit;color:#fff;border:1px solid var(--line);
+  background:rgba(20,28,38,.22);
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;-webkit-user-select:none;
+}
+.fluid-syringe svg{
+  width:22px;height:36px;display:block;pointer-events:none;
+}
+.fluid-syringe .barrel-fill{fill:currentColor;opacity:0;stroke:none}
+.fluid-syringe.is-full::after{
+  content:"";position:absolute;top:7px;right:8px;
+  width:6px;height:11px;
+  border-right:1.5px solid #fff;border-bottom:1.5px solid #fff;
+  transform:rotate(40deg);pointer-events:none;
+}
+.fluid-syringe.is-full,
+.fluid-syringe.is-full:hover,
+.fluid-syringe.is-full:focus-visible{
+  border-color:#fff;
+  background:rgba(255,255,255,.2);
+  box-shadow:0 0 0 1px rgba(255,255,255,.55);
+}
+.fluid-syringe.is-full .barrel-fill{opacity:.78}
+.fluid-syringe:hover,.fluid-syringe:focus-visible{border-color:#fff;background:rgba(255,255,255,.08)}
+.fluid-done{
+  font-family:var(--font-poiret);font-size:1.25rem;letter-spacing:.08em;
+  text-align:center;margin:14px 0 4px;color:#fff;
+}
+.fluid-today{
+  text-align:center;margin:10px 0 0;
+  font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:300;
+  color:var(--ink-dim);
+}
+.fluid-call{
+  text-align:center;margin:14px 0 0;
+  font-size:.95rem;color:var(--ink-dim);font-weight:300;
+}
+.fluid-call a{font-weight:600}
+
+.fluid-page-panel{margin-top:8px}
+
+@media (min-width:560px){
+  .fluid-syringe{min-height:72px}
+  .fluid-syringe svg{width:26px;height:42px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .fluid-syringe,.fluid-syringe .barrel-fill{transition:none}
+}

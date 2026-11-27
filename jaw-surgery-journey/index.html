@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' 'self'; script-src 'unsafe-inline' 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#5E6E7C">
 <meta name="description" content="Your jaw surgery journey with Dr. Ben Kang at Langley Oral &amp; Maxillofacial Surgery — from consult to UBC Hospital and recovery.">
 <title>Your Jaw Surgery Journey | Langley Oral &amp; Maxillofacial Surgery</title>
 <link rel="preload" href="fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fluids/fluids.css">
 <script>
 (function () {
   "use strict";
@@ -808,6 +809,18 @@ footer.legal{
         </ul>
       </div>
     </div>
+    <section class="fluid-tracker" data-fluid-tracker aria-labelledby="fluid-title">
+      <h3 class="fluid-title" id="fluid-title">Fluid tracker</h3>
+      <p class="fluid-lead">Drink 15 syringes every hour</p>
+      <p class="fluid-meta">
+        <span data-fluid-count>0 of 15 this hour</span>
+        <span data-fluid-countdown>Resets in 60:00</span>
+      </p>
+      <div class="fluid-grid" data-fluid-grid role="group" aria-label="Fifteen syringes"></div>
+      <p class="fluid-done" data-fluid-done hidden>Great job, all 15 done this hour</p>
+      <p class="fluid-today" data-fluid-today>Today · 0 hours at 15 of 15</p>
+      <p class="fluid-call">Questions? Call the clinic at <a href="tel:+16043710578">604-371-0578</a>.</p>
+    </section>
     <h3>Eating and chewing</h3>
     <p>Your diet follows Dr. Kang’s guidance. If you follow aftercare, this is typically about <strong>2 weeks of a liquid diet</strong>, then a slow step-up as he directs.</p>
     <p><strong>Do not chew until he clears it.</strong> That includes gum, meat, nuts, chewy bread, and “testing” your bite.</p>
@@ -988,5 +1001,6 @@ footer.legal{
   current();
 })();
 </script>
+<script src="fluids/fluids.js"></script>
 </body>
 </html>

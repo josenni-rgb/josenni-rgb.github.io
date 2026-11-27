@@ -43,6 +43,11 @@ def save(url: str, dest_stem: Path) -> None:
     print(f"{dest_stem.with_suffix('.png').relative_to(ROOT)}  {url}")
 
 
+EXTRA = [
+    (f"{BASE}/jaw-surgery-journey/fluids/", ROOT / "jaw-surgery-journey" / "qr" / "fluids"),
+]
+
+
 def main() -> None:
     for folder, items in PAGES.items():
         for stage, stem in items:
@@ -50,7 +55,10 @@ def main() -> None:
             if stage:
                 url += f"?stage={stage}"
             save(url, ROOT / folder / stem)
+    for url, dest in EXTRA:
+        save(url, dest)
 
 
 if __name__ == "__main__":
     main()
+
