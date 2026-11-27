@@ -293,6 +293,7 @@ html.stage-lock[data-open-stage="consent"] .has-date-only{display:none!important
 .clinic-call-only{display:none}
 html.stage-lock[data-open-stage="recovery"] .emergency-only{display:none}
 html.stage-lock[data-open-stage="recovery"] .clinic-call-only{display:inline}
+html.stage-lock .staff-only{display:none!important}
 
 @media (min-width:780px){
   .mindmap{max-width:560px;height:560px;margin:8px auto 12px}
@@ -649,6 +650,39 @@ footer.legal{
 
 <main>
 <div class="wrap">
+  <article class="panel staff-only" id="make-link" data-fluid-make-link>
+    <p class="lbl">Staff</p>
+    <h2>Make a fluid tracker link</h2>
+    <p class="intro">Text the patient a personal link so they never type their name. Nothing from this box is saved or sent.</p>
+    <section class="fluid-maker" aria-label="Make a personal fluid tracker link">
+      <label class="fluid-field">
+        <span>First name</span>
+        <input data-link-first type="text" maxlength="30" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Sarah">
+      </label>
+      <label class="fluid-field">
+        <span>Last initial</span>
+        <input data-link-initial type="text" maxlength="2" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="K">
+      </label>
+      <label class="fluid-field">
+        <span>Chart # (optional)</span>
+        <input data-link-chart type="text" maxlength="9" autocomplete="off" inputmode="numeric" placeholder="1234">
+      </label>
+      <p class="fluid-who-error" data-link-error hidden></p>
+      <div class="fluid-link-out" data-link-out hidden>
+        <label class="fluid-field">
+          <span>Link</span>
+          <input data-link-url type="text" readonly>
+        </label>
+        <button type="button" class="fluid-copy-lg" data-link-copy>Copy link</button>
+        <label class="fluid-field">
+          <span>Text message</span>
+          <textarea data-link-message readonly rows="7"></textarea>
+        </label>
+        <button type="button" class="fluid-send" data-link-copy-message>Copy message</button>
+      </div>
+      <p class="fluid-privacy">Nothing is saved or sent from this tool.</p>
+    </section>
+  </article>
   <article class="panel" id="consult" data-lock="stage">
     <p class="lbl">Stage 01</p>
     <h2>After Your Consult</h2>
@@ -1022,6 +1056,7 @@ footer.legal{
   current();
 })();
 </script>
+<script src="fluids/patient-link.js"></script>
 <script src="fluids/config.js"></script>
 <script src="fluids/fluids.js"></script>
 </body>

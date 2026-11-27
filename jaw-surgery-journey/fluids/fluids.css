@@ -140,6 +140,27 @@
   opacity:.45;cursor:not-allowed;
 }
 
+.fluid-maker{margin:4px 0}
+.fluid-field textarea{
+  width:100%;margin:0;padding:12px;font:inherit;color:#fff;
+  background:rgba(20,28,38,.35);border:1px solid var(--line);
+  min-height:8.5rem;resize:vertical;line-height:1.45;
+}
+.fluid-copy-lg{
+  appearance:none;-webkit-appearance:none;
+  display:block;width:100%;margin:0 0 16px;padding:16px 14px;
+  font:inherit;font-size:.85rem;font-weight:400;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:rgba(255,255,255,.16);
+  border:1px solid #fff;cursor:pointer;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;
+}
+.fluid-copy-lg:hover,.fluid-copy-lg:focus-visible{background:rgba(255,255,255,.24)}
+.fluid-copy-lg:disabled,.fluid-send:disabled{
+  opacity:.45;cursor:not-allowed;
+}
+.fluid-link-out{margin-top:8px}
+
 .fluid-page-panel{margin-top:8px}
 
 @media (min-width:560px){

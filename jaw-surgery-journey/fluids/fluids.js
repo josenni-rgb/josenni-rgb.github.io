@@ -162,11 +162,27 @@
   function normalizePatientLabel(raw) {
     var s = String(raw || "").trim().replace(/\s+/g, " ");
     if (!s) return { ok: false, error: "Enter your first name and last initial, like Sarah K." };
-    if (/[0-9]/.test(s)) {
-      return { ok: false, error: "Do not enter numbers, a PHN, birthdate, or phone. Use a name like Sarah K." };
-    }
     if (/@/.test(s) || /https?:/i.test(s)) {
       return { ok: false, error: "Do not enter an email or website. Use a name like Sarah K." };
+    }
+    var chart = "";
+    var hash = s.indexOf("#");
+    if (hash !== -1) {
+      var chartRaw = s.slice(hash + 1).trim();
+      s = s.slice(0, hash).trim().replace(/\s+/g, " ");
+      if (global.FluidsLink && typeof global.FluidsLink.normalizeChart === "function") {
+        var chartRes = global.FluidsLink.normalizeChart(chartRaw);
+        if (!chartRes.ok) return chartRes;
+        chart = chartRes.chart;
+      } else if (chartRaw) {
+        if (!/^\d{1,9}$/.test(chartRaw) || chartRaw.length === 10) {
+          return { ok: false, error: "Do not enter a PHN or phone. Chart # is optional and shorter than 10 digits." };
+        }
+        chart = chartRaw;
+      }
+    }
+    if (/[0-9]/.test(s)) {
+      return { ok: false, error: "Do not enter numbers, a PHN, birthdate, or phone. Use a name like Sarah K." };
     }
     var parts = s.split(" ");
     if (parts.length !== 2) {
@@ -186,7 +202,9 @@
     } else {
       first = first.charAt(0).toUpperCase() + first.slice(1);
     }
-    return { ok: true, label: first + " " + initialMatch[1].toUpperCase() + "." };
+    var label = first + " " + initialMatch[1].toUpperCase() + ".";
+    if (chart) label += " #" + chart;
+    return { ok: true, label: label, chart: chart };
   }
 
   function normalizeSurgeryDate(raw) {
@@ -225,6 +243,36 @@
 
   function clearPatient() {
     try { localStorage.removeItem(PATIENT_KEY); } catch (e) {}
+  }
+
+  function dropPatientQuery() {
+    try {
+      if (!global.location || !global.history || !global.history.replaceState) return;
+      var search = global.location.search || "";
+      if (!/[?&]p=/.test(search)) return;
+      var kept = [];
+      search.replace(/^\?/, "").split("&").forEach(function (part) {
+        if (!part) return;
+        var key = part.split("=")[0];
+        try {
+          if (decodeURIComponent(key.replace(/\+/g, " ")) === "p") return;
+        } catch (e) {}
+        kept.push(part);
+      });
+      var next = global.location.pathname + (kept.length ? "?" + kept.join("&") : "") + (global.location.hash || "");
+      global.history.replaceState(null, "", next);
+    } catch (e) {}
+  }
+
+  function applyPatientFromQuery() {
+    var api = global.FluidsLink;
+    if (!api || typeof api.parseCode !== "function" || typeof api.queryParam !== "function") return;
+    var raw = api.queryParam("p");
+    if (!raw) return;
+    var parsed = api.parseCode(raw);
+    if (!parsed.ok) return;
+    var cur = getPatient();
+    if (cur.label !== parsed.label) savePatient(parsed.label, cur.surgeryDate);
   }
 
   function loadQueue() {
@@ -638,6 +686,7 @@
       setText(whoError, "");
       savePatient(nameRes.label, dateRes.date);
       if (nameInput) nameInput.value = nameRes.label;
+      dropPatientQuery();
       paintWho();
       flushQueue();
     }
@@ -698,6 +747,7 @@
   }
 
   function boot() {
+    applyPatientFromQuery();
     var nodes = document.querySelectorAll("[data-fluid-tracker]");
     Array.prototype.forEach.call(nodes, init);
     if (!global.__fluidsInterval) {
@@ -734,6 +784,7 @@
     getPatient: getPatient,
     savePatient: savePatient,
     clearPatient: clearPatient,
+    applyPatientFromQuery: applyPatientFromQuery,
     getDeviceId: getDeviceId,
     getQueue: loadQueue,
     getSent: loadSent,

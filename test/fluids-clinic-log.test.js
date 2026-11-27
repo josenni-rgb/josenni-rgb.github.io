@@ -11,6 +11,10 @@ var FLUIDS_JS = fs.readFileSync(
   path.join(ROOT, "jaw-surgery-journey/fluids/fluids.js"),
   "utf8"
 );
+var PATIENT_LINK_JS = fs.readFileSync(
+  path.join(ROOT, "jaw-surgery-journey/fluids/patient-link.js"),
+  "utf8"
+);
 var GS_SRC = fs.readFileSync(path.join(ROOT, "apps-script/fluid-log.gs"), "utf8");
 
 function memStorage() {
@@ -93,7 +97,15 @@ function loadClient(opts) {
     setInterval: function () { return 0; },
     clearInterval: function () {},
     addEventListener: function () {},
-    __fluidsTestNow: opts.now || null
+    __fluidsTestNow: opts.now || null,
+    location: {
+      search: opts.search || "",
+      pathname: "/jaw-surgery-journey/fluids/",
+      hash: "",
+      origin: "https://josenni-rgb.github.io"
+    },
+    history: { replaceState: function () {} },
+    navigator: {}
   };
   sandbox.window = sandbox;
   sandbox.fetch = function (url, init) {
@@ -103,9 +115,11 @@ function loadClient(opts) {
     return Promise.resolve({ ok: true });
   };
   vm.createContext(sandbox);
+  vm.runInContext(PATIENT_LINK_JS, sandbox);
   vm.runInContext(FLUIDS_JS, sandbox);
   return {
     api: sandbox.__fluidsApi,
+    link: sandbox.FluidsLink,
     sandbox: sandbox,
     ls: ls,
     fetchCalls: fetchCalls,
@@ -173,6 +187,48 @@ test("name format accepts Sarah K. and rejects full last names and PHI", functio
   assert.strictEqual(c.api.normalizeSurgeryDate("").ok, true);
   assert.strictEqual(c.api.normalizeSurgeryDate("2026-11-01").ok, true);
   assert.strictEqual(c.api.normalizeSurgeryDate("2026-13-40").ok, false);
+  assert.strictEqual(c.api.normalizePatientLabel("Sarah K. #1234").ok, true);
+  assert.strictEqual(c.api.normalizePatientLabel("Sarah K. #1234").label, "Sarah K. #1234");
+  assert.strictEqual(c.api.normalizePatientLabel("Sarah K. #1234567890").ok, false);
+});
+
+test("personal ?p= code parses first name, last initial, optional chart", function () {
+  var c = loadClient();
+  var sarah = c.link.parseCode("Sarah-K-1234");
+  assert.strictEqual(sarah.ok, true);
+  assert.strictEqual(sarah.label, "Sarah K. #1234");
+  assert.strictEqual(sarah.code, "Sarah-K-1234");
+  assert.strictEqual(c.link.parseCode("Sarah-K").label, "Sarah K.");
+  assert.strictEqual(c.link.parseCode("Mary-Anne-K-12").label, "Mary-Anne K. #12");
+  assert.strictEqual(c.link.parseCode("Sarah-Kang").ok, false);
+  assert.strictEqual(c.link.parseCode("Sarah-K-1234567890").ok, false);
+  assert.strictEqual(c.link.parseCode("sarah@x.com-K").ok, false);
+  var fields = c.link.fromFields("Sarah", "K", "1234");
+  assert.strictEqual(c.link.trackerUrl(fields.code), "https://josenni-rgb.github.io/jaw-surgery-journey/fluids/?p=Sarah-K-1234");
+  var msg = c.link.textMessage("Sarah", c.link.trackerUrl(fields.code));
+  assert.ok(msg.indexOf("Hi Sarah,") === 0);
+  assert.ok(msg.indexOf("604-371-0578") !== -1);
+  assert.ok(msg.indexOf("?p=Sarah-K-1234") !== -1);
+});
+
+test("?p= sets identity, skips needing a typed name, and a new ?p switches", function () {
+  var c = loadClient({ search: "?p=Sarah-K-1234", endpoint: "https://example.test/exec" });
+  assert.strictEqual(c.api.getPatient().label, "Sarah K. #1234");
+  c.sandbox.location.search = "?p=Sam-T-99";
+  c.api.applyPatientFromQuery();
+  assert.strictEqual(c.api.getPatient().label, "Sam T. #99");
+  c.api.enqueueHour("2026-11-27", 10, 5, true);
+  return c.api.flushQueue().then(function () {
+    var body = JSON.parse(c.fetchCalls[0].init.body);
+    assert.strictEqual(body.patient, "Sam T. #99");
+    assert.strictEqual(body.partial, true);
+    assert.strictEqual(body.syringes, 5);
+  });
+});
+
+test("without ?p the tracker does not invent a patient identity", function () {
+  var c = loadClient();
+  assert.strictEqual(c.api.getPatient().label, "");
 });
 
 test("empty ENDPOINT_URL skips fetch but still queues", function () {
