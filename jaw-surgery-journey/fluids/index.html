@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; form-action 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; connect-src https: http:; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#5E6E7C">
-<meta name="description" content="Hourly fluid tracker for jaw surgery recovery with Dr. Ben Kang at Langley Oral &amp; Maxillofacial Surgery. Saved only on this device.">
+<meta name="description" content="Hourly fluid tracker for jaw surgery recovery with Dr. Ben Kang at Langley Oral &amp; Maxillofacial Surgery. Hourly totals and your name initial are shared with the clinic.">
 <title>Fluid Tracker | Langley Oral &amp; Maxillofacial Surgery</title>
 <link rel="preload" href="../../shared/fonts/big-shoulders-100.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../../shared/fonts/josefin-300.woff2" as="font" type="font/woff2" crossorigin>
@@ -20,7 +20,7 @@
   <p class="kicker">Langley Oral &amp; Maxillofacial Surgery · Dr. Ben Kang</p>
   <h1><span>Fluid</span><span>Tracker</span></h1>
   <p class="yearish">This hour</p>
-  <p class="lede">Drink 15 syringes every hour. Tap a syringe when you finish one. Tap again if you tapped by mistake. Ticks stay on this phone only.</p>
+  <p class="lede">Drink 15 syringes every hour. Tap a syringe when you finish one. Tap again if you tapped by mistake.</p>
   <p class="print-url">https://josenni-rgb.github.io/jaw-surgery-journey/fluids/</p>
 </header>
 
@@ -28,6 +28,24 @@
 <div class="wrap">
   <article class="panel fluid-page-panel" id="tracker">
     <section class="fluid-tracker" data-fluid-tracker aria-label="Hourly fluid tracker">
+      <div class="fluid-who-card" data-fluid-who-card hidden>
+        <p class="fluid-who-ask">First name and last initial</p>
+        <p class="fluid-who-help">Like Sarah K. Do not enter a full last name, PHN, birthdate, email, or phone.</p>
+        <label class="fluid-field">
+          <span>First name and last initial</span>
+          <input data-fluid-name type="text" maxlength="40" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Sarah K." inputmode="text">
+        </label>
+        <label class="fluid-field">
+          <span>Surgery date (optional)</span>
+          <input data-fluid-surgery type="date">
+        </label>
+        <p class="fluid-who-error" data-fluid-who-error hidden></p>
+        <button type="button" class="fluid-who-save" data-fluid-who-save>Save</button>
+      </div>
+      <p class="fluid-who" data-fluid-who hidden>
+        <span data-fluid-who-label></span>
+        <button type="button" class="fluid-who-change" data-fluid-who-change>Not you? Change</button>
+      </p>
       <p class="fluid-meta">
         <span data-fluid-count>0 of 15 this hour</span>
         <span data-fluid-countdown>Resets in 60:00</span>
@@ -35,6 +53,9 @@
       <div class="fluid-grid" data-fluid-grid role="group" aria-label="Fifteen syringes"></div>
       <p class="fluid-done" data-fluid-done hidden>Great job, all 15 done this hour</p>
       <p class="fluid-today" data-fluid-today>Today · 0 hours at 15 of 15</p>
+      <p class="fluid-privacy">Your hourly totals and name initial are shared with the clinic.</p>
+      <button type="button" class="fluid-send" data-fluid-send hidden>Send today's log now</button>
+      <p class="fluid-send-status" data-fluid-send-status aria-live="polite"></p>
       <p class="fluid-call">Questions? Call the clinic at <a href="tel:+16043710578">604-371-0578</a>.</p>
     </section>
   </article>
@@ -43,10 +64,11 @@
     <div class="sun" aria-hidden="true"></div>
     <p class="quote">Little sips, steadily, through the hour.</p>
     <footer class="legal wrap">
-      <p>Ticks are saved only on this device. Nothing is sent to the clinic. Follow Dr. Kang’s instructions for you.</p>
+      <p>Hourly totals and your first name plus last initial are shared with the clinic. Follow Dr. Kang’s instructions for you.</p>
     </footer>
   </div>
 </main>
+<script src="config.js"></script>
 <script src="fluids.js"></script>
 </body>
 </html>
